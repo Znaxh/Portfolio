@@ -8,33 +8,30 @@ const projects = [
     title: 'Project One',
     description: 'This is the first project description. hello hello hello heel',
     link: 'https://example.com/project-one',
+    demolink: 'https://google.com',
     image: image
   },
   {
     title: 'Project Two',
     description: 'This is the second project description.',
     link: 'https://example.com/project-two',
+    demolink: 'https://google.com',
     image: image
   },
   {
-    title: 'Project One',
+    title: 'Project Three',
     description: 'This is the first project description.',
     link: 'https://example.com/project-one',
+    demolink: 'https://google.com',
     image: image
   },
   {
-    title: 'Project three',
+    title: 'Project Four',
     description: 'This is the first project description.',
     link: 'https://example.com/project-one',
+    demolink: 'https://google.com',
     image: image
-  },
-  {
-    title: 'Project three',
-    description: 'This is the first project description.',
-    link: 'https://example.com/project-one',
-    image: image
-  },
-  // Add more projects here
+  }
 ];
 
 const Projects = () => {
@@ -47,6 +44,7 @@ const Projects = () => {
             title={project.title}
             description={project.description}
             link={project.link}
+            demo={project.demolink}
             image={project.image}
           />
         ))}
