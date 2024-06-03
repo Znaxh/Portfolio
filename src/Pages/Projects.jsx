@@ -34,6 +34,12 @@ const projects = [
     link: 'https://example.com/project-one',
     image: image
   },
+  {
+    title: 'New Project',
+    description: 'This is the first project description.',
+    link: 'https://example.com/project-one',
+    image: image
+  },
   // Add more projects here
 ];
 
