@@ -22,12 +22,6 @@ const projects = [
     link: 'https://example.com/project-one',
     image: image
   },
-  {
-    title: 'Project Two',
-    description: 'This is the second project description.',
-    link: 'https://example.com/project-two',
-    image: image
-  },
   // Add more projects here
 ];
 
