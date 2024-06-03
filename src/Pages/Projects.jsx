@@ -31,7 +31,24 @@ const projects = [
     link: 'https://example.com/project-one',
     demolink: 'https://google.com',
     image: image
+<<<<<<< HEAD
   }
+=======
+  },
+  {
+    title: 'Project three',
+    description: 'This is the first project description.',
+    link: 'https://example.com/project-one',
+    image: image
+  },
+  {
+    title: 'New Project',
+    description: 'This is the first project description.',
+    link: 'https://example.com/project-one',
+    image: image
+  },
+  // Add more projects here
+>>>>>>> cb7f52e3e221a4e54449f77c419a41a597c01fec
 ];
 
 const Projects = () => {
