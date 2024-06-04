@@ -104,3 +104,25 @@ box-shadow: 10px 25px 10px #000; /* Smaller shadow on hover */
     transform: translate(4px, 4px);
     box-shadow: 0 0 0 #888888;
 }
+
+.fork-btn {
+    font-size: 1.1em ;
+    padding-top: 10px ;
+  }
+  
+  .fork-btn-inner {
+    line-height: 1.4em ;
+    background-color: #934cce5e ;
+    padding: 0.25rem 1.1rem ;
+    vertical-align: middle ;
+    text-align: center ;
+  }
+  
+  .fork-btn-inner:hover {
+    transform: translateY(-2px) ;
+    background-color: #a24dd386 ;
+    border-color: #a24dd386 ;
+  }
+  .fork-btn-inner::after {
+    display: none ;
+  }

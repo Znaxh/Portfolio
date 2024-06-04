@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
 import { AiFillStar } from "react-icons/ai";
 
-
 export default function Header() {
     return (
         <header className="shadow sticky z-50 top-0">
@@ -49,10 +48,10 @@ export default function Header() {
                                     Resume
                                 </NavLink>
                             </li>
-                            <div className=" bg-black flex"> 
-                                <CgGitFork className="text-white"></CgGitFork>
-                                <AiFillStar className="text-white" ></AiFillStar>
-                            </div>
+                            <button type='button' onClick={()=>{window.open('https://github.com/AnuragSingh4845/port',"_blank")}}>
+                                <CgGitFork />
+                                <AiFillStar />
+                            </button>
                         </ul>
                     </div>
                 </div>
