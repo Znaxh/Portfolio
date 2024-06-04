@@ -6,8 +6,10 @@ import {
   DiNodejs,
   DiMongodb,
   DiPython,
-  DiGit,
+  DiGit
 } from "react-icons/di";
+import { SiThreedotjs } from 'react-icons/si';
+
 
 const Techstack = () => {
   return (
@@ -16,6 +18,7 @@ const Techstack = () => {
         <CgCPlusPlus />
         <DiReact />
         <DiNodejs />
+        <SiThreedotjs />
         <DiMongodb />
         <DiPython />
         <DiGit />

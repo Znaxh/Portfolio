@@ -108,21 +108,36 @@ box-shadow: 10px 25px 10px #000; /* Smaller shadow on hover */
 .fork-btn {
     font-size: 1.1em ;
     padding-top: 10px ;
-  }
+}
   
-  .fork-btn-inner {
+.fork-btn-inner {
     line-height: 1.4em ;
     background-color: #934cce5e ;
     padding: 0.25rem 1.1rem ;
     vertical-align: middle ;
     text-align: center ;
-  }
+}
   
-  .fork-btn-inner:hover {
+.fork-btn-inner:hover {
     transform: translateY(-2px) ;
     background-color: #a24dd386 ;
     border-color: #a24dd386 ;
-  }
-  .fork-btn-inner::after {
+}
+.fork-btn-inner::after {
     display: none ;
-  }
+}
+.hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFA500; /* Set underline color */
+    transform: scaleX(0); /* Initially scale the underline to 0 */
+    transition: transform 0.3s ease; /* Add a transition effect */
+}
+  
+.hover-underline:hover::after {
+    transform: scaleX(1); /* Scale the underline to full width on hover */
+}

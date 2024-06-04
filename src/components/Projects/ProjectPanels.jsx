@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { BsGithub } from "react-icons/bs";
+import { BiLink } from 'react-icons/bi';
 
 const ProjectPanel = ({ title, description, link, demo ,image }) => {
   return (
@@ -14,12 +14,13 @@ const ProjectPanel = ({ title, description, link, demo ,image }) => {
             <button type='button' onClick={()=>{
               window.open(link, "_blank");
             }} className='inline-flex text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75' >
-              Github
+              <BsGithub />Github
             </button>
             <button type='button' onClick={()=>{
               window.open(demo, "_blank")
             }} className='inline-flex text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75'>
-              Demo demo
+              <BiLink />
+              Demo 
             </button>
           </div>
         </div>
