@@ -19,7 +19,7 @@ const ProjectPanel = ({ title, description, link, demo ,image }) => {
             <button type='button' onClick={()=>{
               window.open(demo, "_blank")
             }} className='inline-flex text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75'>
-              Demo
+              Demo demo
             </button>
           </div>
         </div>
