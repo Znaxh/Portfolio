@@ -5,14 +5,14 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import Home from './Pages/Home'
 import About from './Pages/About'
-import Contact from './Pages/Contact'
+import Resume from './Pages/Resume'
 import Projects from './Pages/Projects'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element : <App />,
-    children : [
+    children : [  
       {
         path : "",
         element: <Home />
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         path : 'about',
         element: <About />
       },{
-        path : 'contact',
-        element : <Contact />
+        path : 'resume',
+        element : <Resume />
       },{
         path : 'projects',
         element : <Projects />
