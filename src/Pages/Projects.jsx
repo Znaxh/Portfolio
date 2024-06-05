@@ -2,6 +2,7 @@
 import React from 'react';
 import ProjectPanel from '../components/Projects/ProjectPanels';
 import image from '../assets/Panel.png'
+import Currently from '../components/Projects/Currently';
 
 const projects = [
   {
@@ -49,6 +50,7 @@ const Projects = () => {
           />
         ))}
       </div>
+      <Currently />
     </div>
   );
 };

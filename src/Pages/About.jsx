@@ -7,7 +7,7 @@ import Aboutcard from "../components/About/Aboutcard";
 const About = () => {
   return (
     <>
-      <div>
+      <div className="space-y-24">
         <Aboutcard />
         <Techstack />
         <Toolstack />
