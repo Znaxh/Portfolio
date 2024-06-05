@@ -3,9 +3,9 @@ import { BiDownload } from "react-icons/bi";
 
 const Downloadcv = () => {
   return (
-    <div className="h-10">
+    <div className="flex justify-center">
       <button
-        className="flex bg-gray-500 rounded-md my-2 py-2 px-4 border place-items-center hover:bg-white hover:border-black hover:border-2"
+        className="flex bg-gray-500 rounded-md py-2 px-4 my-4 border place-items-center hover:bg-white hover:border-black hover:border-2"
         onClick={() => {
           window.open(
             "https://drive.google.com/file/d/1OWMh-iav8fue-ztvt7q5OOqZE_s-2WUx/view",

@@ -2,7 +2,6 @@
 import React from 'react';
 import ProjectPanel from '../components/Projects/ProjectPanels';
 import image from '../assets/Panel.png'
-import Currently from '../components/Projects/Currently';
 
 const projects = [
   {
@@ -38,6 +37,7 @@ const projects = [
 const Projects = () => {
   return (
     <div className="">
+      {/* <div className='justify-center flex text-xl'>Completed Projects</div> */}
       <div className="comic-grid">
         {projects.map((project, index) => (
           <ProjectPanel
@@ -50,7 +50,6 @@ const Projects = () => {
           />
         ))}
       </div>
-      <Currently />
     </div>
   );
 };

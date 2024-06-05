@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="sticky  z-50 top-0">
+    <header className="sticky h-0 mx-96 z-50 top-0">
       <nav className=" border-gray-200 px-4 lg:px-6 py-2.5">
-        <div className="flex space-x-9 justify-center ">
+        <div className="flex space-x-9 bg-gray-500 rounded-full mx-10 justify-center ">
           <div className="px-4 py-2 rounded-md">
             <NavLink
               to="/"
