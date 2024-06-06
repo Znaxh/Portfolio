@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles to hide scrollbar globally but allow scrolling */
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+}
+
+html, body {
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+
 .comic-grid {
     display: grid;
     grid-gap: 1rem;
@@ -72,10 +83,7 @@ box-shadow: 10px 25px 10px #000; /* Smaller shadow on hover */
     margin-bottom: 1rem;
 }
   
-.view-project-link {
-    color: #1d4ed8;
-    text-decoration: underline;
-}  
+
 
 .pixel-button {
     font-family: 'Press Start 2P', sans-serif; /* Pixelated font */
