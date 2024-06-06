@@ -83,7 +83,10 @@ box-shadow: 10px 25px 10px #000; /* Smaller shadow on hover */
     margin-bottom: 1rem;
 }
   
-
+.view-project-link {
+    color: #1d4ed8;
+    text-decoration: underline;
+}  
 
 .pixel-button {
     font-family: 'Press Start 2P', sans-serif; /* Pixelated font */

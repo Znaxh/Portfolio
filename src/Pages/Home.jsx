@@ -1,6 +1,6 @@
 import Type from "../components/Home/Type";
 import Intro from "../components/Home/Intro";
-
+  
 // import image from '../assets/back1.jpg'
 
 export default function Home() {
