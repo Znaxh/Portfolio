@@ -23,6 +23,7 @@ function MobileNav({ showNav, setShowNav }) {
             <Link
               to={"/"}
               className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold relative"
+              style={{ textDecoration: 'none' }}
               onClick={() => setShowNav(false)}
             >
               <AiOutlineHome fontSize={20} />
@@ -33,6 +34,7 @@ function MobileNav({ showNav, setShowNav }) {
             <Link
               to={"/about"}
               className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold relative"
+              style={{ textDecoration: 'none' }}
               onClick={() => setShowNav(false)}
             >
               <FiUser fontSize={20} />
@@ -43,6 +45,7 @@ function MobileNav({ showNav, setShowNav }) {
             <Link
               to={"/projects"}
               className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold relative"
+              style={{ textDecoration: 'none' }}
               onClick={() => setShowNav(false)}
             >
               <AiOutlineFundProjectionScreen fontSize={20} />
@@ -53,6 +56,7 @@ function MobileNav({ showNav, setShowNav }) {
             <Link
               to={"/resume"}
               className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold relative"
+              style={{ textDecoration: 'none' }}
               onClick={() => setShowNav(false)}
             >
               <FiFileText fontSize={20} />

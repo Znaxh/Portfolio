@@ -31,8 +31,8 @@ function Navbar() {
     <div
       className={
         scroll
-          ? "flex items-center justify-between px-4 z-50 bg-purple-950 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg shadow-lg relative lg:sticky top-0"
-          : "flex items-center justify-between px-4 z-50  relative lg:sticky top-0"
+          ? "flex items-center justify-between px-4 z-50 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg shadow-lg relative lg:sticky top-0"
+          : "flex items-center justify-between px-4 z-50 relative lg:sticky top-0"
       }
     >
       <span className="capitalize md:w-1/3 lg:w-1/2 flex items-center justify-center py-5 px-2 relative">
@@ -43,12 +43,13 @@ function Navbar() {
           {name}
         </h1>
       </span>
-      <div className="w-2/3 hidden lg:flex items-center justify-start text-white">
+      <div className="w-2/3 hidden lg:flex items-center justify-start ">
         <ul className="flex gap-8 lg:gap-12">
           <li className="relative group">
             <Link
               to={"/"}
-              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold relative before:absolute before:rounded-md before:left-0 before:-bottom-1 before:w-0 transition-all before:duration-200 before:h-[4px] before:bg-purple-500 group-hover:before:w-full"
+              style={{ textDecoration: 'none' }}
+              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold text-white relative before:absolute before:left-0 before:-bottom-1 before:w-0 before:transition-all before:duration-200 before:h-[4px] before:bg-white group-hover:before:w-full"
             >
               <AiOutlineHome fontSize={20} />
               <span className="">Home</span>
@@ -57,7 +58,8 @@ function Navbar() {
           <li className="relative group">
             <Link
               to={"/about"}
-              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold relative before:absolute before:rounded-md before:left-0 before:-bottom-1 before:w-0 transition-all before:duration-200 before:h-[4px] before:bg-purple-500 group-hover:before:w-full"
+              style={{ textDecoration: 'none' }}
+              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold text-white relative before:absolute before:left-0 before:-bottom-1 before:w-0 before:transition-all before:duration-200 before:h-[4px] before:bg-white group-hover:before:w-full"
             >
               <FiUser fontSize={20} />
               <span className="">About</span>
@@ -66,7 +68,8 @@ function Navbar() {
           <li className="relative group">
             <Link
               to={"/projects"}
-              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold relative before:absolute before:rounded-md before:left-0 before:-bottom-1 before:w-0 transition-all before:duration-200 before:h-[4px] before:bg-purple-500 group-hover:before:w-full"
+              style={{ textDecoration: 'none' }}
+              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold text-white relative before:absolute before:left-0 before:-bottom-1 before:w-0 before:transition-all before:duration-200 before:h-[4px] before:bg-white group-hover:before:w-full"
             >
               <AiOutlineFundProjectionScreen fontSize={20} />
               <span className="">Projects</span>
@@ -75,7 +78,8 @@ function Navbar() {
           <li className="relative group">
             <Link
               to={"/resume"}
-              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold relative before:absolute before:rounded-md before:left-0 before:-bottom-1 before:w-0 transition-all before:duration-200 before:h-[4px] before:bg-purple-500 group-hover:before:w-full"
+              style={{ textDecoration: 'none' }}
+              className="flex gap-1 items-center justify-center cursor-pointer text-base lg:text-lg font-semibold text-white relative before:absolute before:left-0 before:-bottom-1 before:w-0 before:transition-all before:duration-200 before:h-[4px] before:bg-white group-hover:before:w-full"
             >
               <FiFileText fontSize={20} />
               <span className="">Resume</span>
