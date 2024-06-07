@@ -1,16 +1,16 @@
+import React from 'react';
 import Type from "../components/Home/Type";
 import Intro from "../components/Home/Intro";
-
-// import image from '../assets/back1.jpg'
 
 export default function Home() {
   return (
     <>
-      <div className="my-16">
-        <div>Hi There!</div>
-        <div> I am <Type /> </div>
-        <Intro />
+      <div className=" bg-[#151a1e] text-[#F2613F] h-screen flex flex-col justify-center items-center">
+        <div className="font-pixel mb-4">Hi There!</div>
+        <div className="mb-4"> I am </div>
+        <Type />
       </div>
+        <Intro />
     </>
   );
 }
