@@ -14,7 +14,6 @@ import MobileNav from "./MobileNav";
 function Navbar() {
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState(false);
-  const name = ["{ Ritesh }"];
 
   return (
     <div className="flex items-center justify-between px-4 z-50 relative lg:sticky top-0 bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg shadow-lg">
@@ -23,11 +22,11 @@ function Navbar() {
           className="cursor-pointer text-xl lg:text-3xl font-bold bg-gradient-to-r from-gray-50 to-blue-100 bg-clip-text text-transparent uppercase"
           onClick={() => navigate("/")}
         >
-          {name}
+          ANURAG
         </h1>
       </span>
       <div className="w-2/3 hidden lg:flex items-center justify-start">
-        <ul className="flex gap-8 lg:gap-12">
+        <ul className="flex gap-8 lg:gap-12 mt-[15px]">
           {[
             { to: "/", icon: <AiOutlineHome fontSize={20} />, label: "Home" },
             { to: "/about", icon: <FiUser fontSize={20} />, label: "About" },

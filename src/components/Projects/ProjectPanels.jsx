@@ -4,7 +4,7 @@ import { BiLink } from 'react-icons/bi';
 
 const ProjectPanel = ({ title, description, link, demo ,image }) => {
   return (
-    <div className="project-panel mt-16 mb-4 h-screen">
+    <div className="project-panel mt-2 mb-4 h-screen">
       <div className="image-container">
         {image && <img src={image} alt={title} className="project-image border border-black border-2" />}
         <div className="text-container">
