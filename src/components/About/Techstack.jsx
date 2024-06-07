@@ -12,35 +12,35 @@ import { SiThreedotjs } from "react-icons/si";
 
 const Techstack = () => {
   return (
-    <div className="px-4">
-      <div className="flex justify-center text-3xl mb-10 space-x-1">
-        <div>Professional</div>
-        <span className="text-gray-700"> Skillset</span>
+    <div className="px-4 ">
+      <div className="flex justify-center text-3xl mb-10 space-x-1 ">
+        <div className="text-white">Professional</div>
+        <span className="text-white"> Skillset</span>
       </div>
       <div className="flex flex-wrap justify-center gap-4 px-10">
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiPython />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiPython className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiJavascript1 />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiJavascript1 className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiReact />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiReact className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiNodejs />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiNodejs className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiMongodb />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiMongodb className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <DiGit />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <DiGit className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <CgCPlusPlus />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <CgCPlusPlus className="text-white"/>
         </div>
-        <div className="text-6xl bg-gray-200 border border-black rounded-md w-48 h-28 py-2 flex items-center justify-center">
-          <SiThreedotjs />
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center">
+          <SiThreedotjs className="text-white"/>
         </div>
       </div>
     </div>

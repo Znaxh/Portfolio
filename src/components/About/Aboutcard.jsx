@@ -3,7 +3,7 @@ import React from "react";
 const Aboutcard = () => {
   return (
     <>
-      <div className="flex h-screen bg-black text-white px-10">
+      <div className="flex h-screen  text-white px-10">
         <div className="justify-center place-content-evenly space-y-4  relative w-3/5">
           <div className="flex space-x-1 justify-center">
             <div className="text-3xl">
