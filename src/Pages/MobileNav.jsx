@@ -13,13 +13,13 @@ function MobileNav({ showNav, setShowNav }) {
     <div
       className={
         showNav
-          ? "fixed max-h-screen bg-gradient-to-r from-purple-900 to-violet-900 w-full top-[52px] left-0 rounded-b-md border-2 border-t-0 border-purple-700 z-50 transition-all duration-500 overflow-hidden"
-          : "fixed max-h-0 bg-gradient-to-r from-purple-900 to-violet-900 w-full top-[52px] left-0 rounded-b-md z-50 transition-all duration-500 overflow-hidden"
+          ? "fixed bg-[#151a1e] max-h-screen w-full top-[52px] left-0 border-b-2 border-white z-50 transition-all duration-500 overflow-hidden"
+          : "fixed max-h-0 w-full top-[52px] left-0 z-50 transition-all duration-500 overflow-hidden"
       }
       style={{ transition: "max-height 0.5s ease" }}
     >
       <div className="block items-center justify-center text-white">
-        <ul className="flex gap-8 flex-col mt-10 ">
+        <ul className="flex gap-8 flex-col mt-10 text-white">
           {[
             { to: "/", icon: <AiOutlineHome fontSize={20} />, label: "Home" },
             { to: "/about", icon: <FiUser fontSize={20} />, label: "About" },
@@ -30,10 +30,10 @@ function MobileNav({ showNav, setShowNav }) {
             },
             { to: "/resume", icon: <FiFileText fontSize={20} />, label: "Resume" },
           ].map(({ to, icon, label }) => (
-            <li key={to} className="relative group">
+            <li key={to} className="relative group text-white">
               <Link
                 to={to}
-                className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold"
+                className="flex gap-1 items-center justify-center cursor-pointer text-base font-bold text-white"
                 style={{ textDecoration: "none" }}
                 onClick={() => setShowNav(false)}
               >
@@ -43,16 +43,6 @@ function MobileNav({ showNav, setShowNav }) {
             </li>
           ))}
         </ul>
-
-        <a
-          href="https://github.com/riteshk-007/portfolio"
-          target="_blank"
-          rel="noreferrer"
-          className="flex w-24 my-5 mx-auto gap-2 justify-center items-center text-lg bg-fuchsia-900 px-3 py-[3px] border border-purple-700 rounded-sm"
-        >
-          <DiGitBranch fontSize={18} />
-          <AiFillStar fontSize={18} />
-        </a>
       </div>
     </div>
   );

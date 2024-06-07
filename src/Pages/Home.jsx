@@ -1,16 +1,31 @@
 import React from 'react';
-import Type from "../components/Home/Type";
 import Intro from "../components/Home/Intro";
+import Typewriter from 'typewriter-effect';
 
 export default function Home() {
   return (
     <>
-      <div className=" bg-[#151a1e] text-[#F2613F] h-screen flex flex-col justify-center items-center">
-        <div className="font-pixel mb-4">Hi There!</div>
-        <div className="mb-4"> I am </div>
-        <Type />
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
+      <div className="bg-[#151a1e] text-white h-screen flex flex-col justify-center items-center space-y-4">
+        <div className="font-pixel text-xl md:text-6xl mb-2">HI THERE!</div>
+        <div className="text-2xl md:text-4xl ">I AM</div>
+        <div className="text-[#F2613F] text-bold text-2xl md:text-4xl">
+          <Typewriter
+            options={{
+              strings: [
+                "SOFTWARE DEVELOPER",
+                "FREELANCER",
+                "MERN STACK DEVELOPER",
+                "OPEN SOURCE CONTRIBUTOR",
+              ],
+              autoStart: true,
+              loop: true,
+              deleteSpeed: 50,
+            }}
+          />
+        </div>
       </div>
-        <Intro />
+      <Intro />
     </>
   );
 }

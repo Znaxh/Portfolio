@@ -50,15 +50,6 @@ function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="https://github.com/riteshk-007/portfolio"
-          target="_blank"
-          rel="noreferrer"
-          className="flex mx-10 gap-2 text-lg bg-purple-900 px-5 py-[5px] border border-purple-700 rounded-sm hover:bg-purple-800 transition-all duration-200 hover:-translate-y-[2px]"
-        >
-          <DiGitBranch fontSize={20} />
-          <AiFillStar fontSize={20} />
-        </a>
       </div>
       <span>
         <div className="h-full lg:hidden flex items-center justify-center cursor-pointer">

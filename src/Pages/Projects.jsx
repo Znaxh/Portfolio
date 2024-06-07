@@ -37,7 +37,7 @@ const projects = [
 const Projects = () => {
   return (
     <div className="">
-      {/* <div className='justify-center flex text-xl'>Completed Projects</div> */}
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
       <div className="comic-grid">
         {projects.map((project, index) => (
           <ProjectPanel
