@@ -14,22 +14,26 @@ export default {
         pixel: ['"Press Start 2P"', 'cursive'],
         raleway: ['Raleway', 'sans-serif'],
       },
+      textShadow: {
+        sm: "rgba(255, 255, 255, 0.35) 1px 1px 12px",
+      },
     },
   },
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
+      // Plugin for background grid
       matchUtilities(
         {
           "bg-grid": (value) => ({
             backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="${value}" fill="none"><path d="M64 0H0V64"/></svg>`,
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="${value}" fill="none"><path d="M64 0H0V64"/></svg>`
             )}")`,
           }),
         },
         {
           values: flattenColorPalette(theme("backgroundColor")),
           type: ["color"],
-        },
+        }
       );
 
       matchUtilities(
@@ -41,7 +45,17 @@ export default {
         {
           values: theme("spacing"),
           type: ["number", "length", "any"],
+        }
+      );
+
+      // Plugin for text shadow
+      matchUtilities(
+        {
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
         },
+        { values: theme("textShadow") }
       );
     }),
   ],
