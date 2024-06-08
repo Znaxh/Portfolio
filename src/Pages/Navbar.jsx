@@ -16,7 +16,7 @@ function Navbar() {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <div className="flex items-center justify-between px-4 z-50 relative lg:sticky top-0 bg-[#2228318a] backdrop-blur-lg  drop-shadow-lg shadow-lg">
+    <div className="flex items-center font-raleway justify-between px-4 z-50 relative lg:sticky top-0 bg-[#2228318a] backdrop-blur-lg  drop-shadow-lg shadow-lg">
       <span className="capitalize md:w-1/3 lg:w-1/2 flex items-center justify-center py-2 px-2">
         <h1
           className="cursor-pointer text-xl lg:text-3xl font-bold bg-gradient-to-r from-gray-50 to-blue-100 bg-clip-text text-transparent uppercase"

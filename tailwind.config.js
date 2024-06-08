@@ -7,10 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        vt323: ['VT323', 'monospace'],
         pixel: ['"Press Start 2P"', 'cursive'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        raleway : ['Raleway', 'sans-serif'],
       },
     },
   },

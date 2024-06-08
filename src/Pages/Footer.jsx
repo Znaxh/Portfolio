@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative bg-[#151a1e] py-10 text-white">
+    <div className="relative font-raleway bg-[#151a1e] py-10 text-white">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
       <div className="flex flex-col md:flex-row place-items-center justify-between px-6 md:px-12 mb-8">
         <h5> © {year} </h5>
@@ -49,7 +49,7 @@ const Footer = () => {
               window.open("https://www.instagram.com", "_blank");
             }}
           >
-            DISCORD
+            EMAIL
           </button>
           <button
             className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
@@ -58,7 +58,7 @@ const Footer = () => {
               window.open("https://www.instagram.com", "_blank");
             }}
           >
-            EMAIL
+            TWITTER
           </button>
         </div>
         <div className="mt-4 md:mt-0">
