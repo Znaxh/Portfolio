@@ -4,11 +4,11 @@ import { BiLink } from 'react-icons/bi';
 
 const ProjectPanel = ({ title, description, link, demo ,image }) => {
   return (
-    <div className="project-panel border border-black border-2   mt-2 mb-4 h-screen">
+    <div className="project-panel font-raleway border border-black border-2 mt-2 mb-4 h-screen ">
       <div className="image-container">
         {image && <img src={image} alt={title} className="project-image" />}
         <div className="text-container">
-          <h3 className='font-montserrat font-bold text-xl'>PROJECT NAME</h3>
+          <h3 className='font-montserrat font-bold text-xl'>{title}</h3>
           <p className="description">{description}</p>
           <div className='flex flex-col-2 justify-between relative'>
             <button type='button' onClick={()=>{

@@ -1,15 +1,16 @@
 // src/App.jsx
 import React from 'react';
 import ProjectPanel from '../components/Projects/ProjectPanels';
-import image from '../assets/Project1.png'
+import youtube from '../assets/Project1.png'
+import image from '../assets/Pending.png'
 
 const projects = [
   {
     title: 'Youtube Summarizer',
-    description: 'This is the first project description. hello hello hello heel',
+    description: 'Model Comparison of different youtube models using ROUGE',
     link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
     demolink: 'https://youtubesummarizermodelcomparison-miwyvm7xgfyeuirzw9spal.streamlit.app/',
-    image: image
+    image: youtube
   },
   {
     title: 'Project Two',
@@ -37,7 +38,7 @@ const projects = [
 const Projects = () => {
   return (
     <div className="">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
+      <div className="absolute font-raleway inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
       <div className="comic-grid">
         {projects.map((project, index) => (
           <ProjectPanel

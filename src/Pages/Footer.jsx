@@ -37,7 +37,7 @@ const Footer = () => {
             className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
             type="button"
             onClick={() => {
-              window.open("https://www.linkedin.com", "_blank");
+              window.open("https://www.linkedin.com/in/anurag-pratap-singh-9351a5257/", "_blank");
             }}
           >
             LINKEDIN
@@ -46,7 +46,7 @@ const Footer = () => {
             className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
             type="button"
             onClick={() => {
-              window.open("https://www.instagram.com", "_blank");
+              window.location.href = "mailto:anuragpratapsingh.4845@gmail.com";
             }}
           >
             EMAIL
@@ -55,7 +55,7 @@ const Footer = () => {
             className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
             type="button"
             onClick={() => {
-              window.open("https://www.instagram.com", "_blank");
+              window.open("https://x.com/Anurag_4845", "_blank");
             }}
           >
             TWITTER

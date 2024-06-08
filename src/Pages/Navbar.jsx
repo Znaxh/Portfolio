@@ -3,13 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
-  AiFillStar,
 } from "react-icons/ai";
 import { FiUser, FiFileText } from "react-icons/fi";
-import { DiGitBranch } from "react-icons/di";
 import { RiMenu3Fill } from "react-icons/ri";
 import { MdClose } from "react-icons/md";
 import MobileNav from "./MobileNav";
+import { FiTerminal } from "react-icons/fi";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -19,13 +18,13 @@ function Navbar() {
     <div className="flex items-center font-raleway justify-between px-4 z-50 relative lg:sticky top-0 bg-[#2228318a] backdrop-blur-lg  drop-shadow-lg shadow-lg">
       <span className="capitalize md:w-1/3 lg:w-1/2 flex items-center justify-center py-2 px-2">
         <h1
-          className="cursor-pointer text-xl lg:text-3xl font-bold bg-gradient-to-r from-gray-50 to-blue-100 bg-clip-text text-transparent uppercase"
+          className="cursor-pointer text-white text-4xl lg:text-3xl font-bold bg-gradient-to-r from-gray-50 to-blue-100 bg-clip-text text-transparent uppercase"
           onClick={() => navigate("/")}
         >
-          ANURAG
+          <FiTerminal />
         </h1>
       </span>
-      <div className="w-2/3 hidden lg:flex items-center justify-start">
+      <div className="w-2/3 hidden lg:flex items-center justify-center">
         <ul className="flex gap-8 lg:gap-12 mt-[15px]">
           {[
             { to: "/", icon: <AiOutlineHome fontSize={20} />, label: "Home" },

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Intro = () => {
   return (
-    <div className='h-screen font-raleway text-white flex justify-center items-center'>
+    <div className='h-screen font-raleway text-white flex justify-center items-center' style={{ marginTop: '-50px' }}>
       <div className="max-w-4xl p-8 text-center space-y-6">
         <div className="text-4xl font-bold mb-4">Let Me Introduce Myself</div>
         <div className="text-lg leading-relaxed">
