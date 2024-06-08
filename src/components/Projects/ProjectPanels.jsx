@@ -13,12 +13,12 @@ const ProjectPanel = ({ title, description, link, demo ,image }) => {
           <div className='flex flex-col-2 justify-between relative'>
             <button type='button' onClick={()=>{
               window.open(link, "_blank");
-            }} className='inline-flex h-[50px] text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75' >
+            }} className='inline-flex h-[50px] gap-2 text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg  transition transform hover:scale-105' >
               <BsGithub />Github
             </button>
             <button type='button' onClick={()=>{
               window.open(demo, "_blank")
-            }} className='inline-flex h-[50px] text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75'>
+            }} className='inline-flex h-[50px] gap-2 text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg  transition transform hover:scale-105'>
               <BiLink />
               Demo 
             </button>

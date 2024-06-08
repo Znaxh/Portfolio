@@ -18,11 +18,11 @@ const Footer = () => {
     <div className="relative font-raleway bg-[#151a1e] py-10 text-white">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
       <div className="flex flex-col md:flex-row place-items-center justify-between px-6 md:px-12 mb-8">
-        <h5> © {year} </h5>
+        <h5>© {year}</h5>
         <div className="flex place-items-center space-x-2 text-sm font-bold mt-4 md:mt-0">
           <div>BACK TO TOP</div>
           <PiArrowCircleUpFill
-            className="text-3xl md:text-6xl cursor-pointer text-gray-500 hover:text-white"
+            className="text-3xl md:text-6xl cursor-pointer text-gray-500 hover:text-white transition transform hover:scale-110"
             onClick={scrollToTop}
           />
         </div>
@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 space-y-4 md:space-y-0">
         <div className="flex space-x-2">
           <button
-            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
+            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white transition transform hover:scale-105"
             type="button"
             onClick={() => {
               window.open("https://www.linkedin.com/in/anurag-pratap-singh-9351a5257/", "_blank");
@@ -43,7 +43,7 @@ const Footer = () => {
             LINKEDIN
           </button>
           <button
-            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
+            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white transition transform hover:scale-105"
             type="button"
             onClick={() => {
               window.location.href = "mailto:anuragpratapsingh.4845@gmail.com";
@@ -52,7 +52,7 @@ const Footer = () => {
             EMAIL
           </button>
           <button
-            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
+            className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white transition transform hover:scale-105"
             type="button"
             onClick={() => {
               window.open("https://x.com/Anurag_4845", "_blank");
@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
         <div className="mt-4 md:mt-0">
           <button
-            className="flex space-x-2  place-content-evenly px-4 py-2 text-xl text-[#72aaf3] rounded-md border-2 border-[#4391f9] hover:bg-[#5a9bf152] hover:border-[#72aaf3]"
+            className="flex space-x-2 place-content-evenly px-4 py-2 text-xl text-[#72aaf3] rounded-md border-2 border-[#4391f9] hover:bg-[#5a9bf152] hover:border-[#72aaf3] transition transform hover:scale-105"
             type="button"
             onClick={() => {
               window.open("https://github.com/AnuragSingh4845/port", "_blank");
