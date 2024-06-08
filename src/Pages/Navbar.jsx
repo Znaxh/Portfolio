@@ -25,7 +25,7 @@ function Navbar() {
         </h1>
       </span>
       <div className="w-2/3 hidden lg:flex items-center justify-center">
-        <ul className="flex gap-8 lg:gap-12 mt-[15px]">
+        <ul className="flex gap-8 lg:gap-12  mt-[15px]">
           {[
             { to: "/", icon: <AiOutlineHome fontSize={20} />, label: "Home" },
             { to: "/about", icon: <FiUser fontSize={20} />, label: "About" },
