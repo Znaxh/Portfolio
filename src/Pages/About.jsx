@@ -7,7 +7,8 @@ import Aboutcard from "../components/About/Aboutcard";
 const About = () => {
   return (
     <>
-      <div className="space-y-24">
+      <div className="space-y-16">
+        <div className="absolute inset-0 bg-grid-white/10 bg-grid-16 [mask-image:linear-gradient(180deg,black,transparent)]" />
         <Aboutcard />
         <Techstack />
         <Toolstack />

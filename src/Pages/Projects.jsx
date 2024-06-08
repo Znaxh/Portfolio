@@ -38,8 +38,8 @@ const projects = [
 const Projects = () => {
   return (
     <div className="">
-      <div className="absolute font-raleway inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
-      <div className="comic-grid">
+      <div className="absolute font-raleway inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500" />
+      <div className="comic-grid mb-4">
         {projects.map((project, index) => (
           <ProjectPanel
             key={index}

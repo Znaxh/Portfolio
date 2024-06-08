@@ -12,7 +12,7 @@ import { SiThreedotjs } from "react-icons/si";
 
 const Techstack = () => {
   return (
-    <div className="px-4  font-raleway">
+    <div className="px-4 font-raleway">
       <div className="flex justify-center font-semibold text-3xl mb-10 space-x-1 ">
         <div className="text-white">Professional</div>
         <span className="text-[#F2613F]"> Skillsets</span>
