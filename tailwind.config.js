@@ -3,7 +3,7 @@ const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette");
 const svgToDataUri = require("mini-svg-data-uri");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -16,6 +16,11 @@ export default {
       },
       textShadow: {
         sm: "rgba(255, 255, 255, 0.35) 1px 1px 12px",
+      },
+      gradientColorStops: {
+        primary: '#3490dc',
+        secondary: '#ffed4a',
+        danger: '#e3342f',
       },
     },
   },

@@ -15,7 +15,7 @@ const Techstack = () => {
     <div className="px-4 font-raleway">
       <div className="flex justify-center font-semibold text-3xl mb-10 space-x-1 ">
         <div className="text-white">Professional</div>
-        <span className="text-[#F2613F]"> Skillsets</span>
+        <span className="text-indigo-200"> Skillsets</span>
       </div>
       <div className="flex flex-wrap justify-center gap-4 px-10">
         <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center transition-transform hover:scale-110">

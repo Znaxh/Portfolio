@@ -7,7 +7,7 @@ const Github = () => {
   return (
     <div className="flex flex-col font-raleway items-center justify-center pb-40 pt-12">
       <div className={`text-white font-semibold mb-4 text-3xl`}>
-        Days I <span className="text-[#F2613F]">Code</span>
+        Days I <span className="text-indigo-200">Code</span>
       </div>
       <div className={`text-white md:${isSmallScreen = false}`}>
         <GitHubCalendar

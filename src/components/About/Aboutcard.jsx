@@ -8,12 +8,12 @@ const Aboutcard = () => {
         <div className="justify-center mt-[100px]  space-y-4 relative w-3/5">
           <div className="flex space-x-1 justify-center">
             <div className="text-3xl font-semibold">
-              KNOW WHO <span className="text-[#F2613F]">I'M</span>
+              KNOW WHO <span className="text-indigo-200">I'M</span>
             </div>
           </div>
           <div className="text-xl leading-loose">
             Hi Everyone, I am{" "}
-            <span className="text-[#F2613F] font-semibold">Anurag Pratap Singh</span> from
+            <span className="text-indigo-200 font-semibold">Anurag Pratap Singh</span> from
             Raipur, India. I am currently a third year student at International
             Institute Of Information Technology Naya Raipur.
           </div>
