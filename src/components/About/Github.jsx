@@ -6,7 +6,7 @@ const Github = () => {
   var isSmallScreen = true;
   return (
     <div className="flex flex-col font-raleway items-center justify-center pb-40 pt-12">
-      <div className={`text-white mb-4 text-3xl`}>
+      <div className={`text-white font-semibold mb-4 text-3xl`}>
         Days I <span className="text-[#F2613F]">Code</span>
       </div>
       <div className={`text-white md:${isSmallScreen = false}`}>

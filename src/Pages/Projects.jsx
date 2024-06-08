@@ -1,14 +1,14 @@
 // src/App.jsx
 import React from 'react';
 import ProjectPanel from '../components/Projects/ProjectPanels';
-import image from '../assets/Panel.png'
+import image from '../assets/Project1.png'
 
 const projects = [
   {
-    title: 'Project One',
+    title: 'Youtube Summarizer',
     description: 'This is the first project description. hello hello hello heel',
-    link: 'https://example.com/project-one',
-    demolink: 'https://google.com',
+    link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
+    demolink: 'https://youtubesummarizermodelcomparison-miwyvm7xgfyeuirzw9spal.streamlit.app/',
     image: image
   },
   {
