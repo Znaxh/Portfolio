@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import GitHubCalendar from "react-github-calendar";
+import GitHubCalendar from "react-github-calendar";// Import the CSS file
 
 const Github = () => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const Github = () => {
       <div className="text-3xl text-white mb-4">
         Days I <span className="text-[#F2613F]">Code</span>
       </div>
-      <div className="text-white"> 
+      <div className="text-white">
         <GitHubCalendar
           username="anuragsingh4845"
           blockSize={15}
