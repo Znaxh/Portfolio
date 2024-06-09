@@ -8,8 +8,8 @@ const MobileNav = ({ showNav, setShowNav }) => {
     <div
       className={
         showNav
-          ? "fixed bg-[#151a1e] max-h-screen w-full top-[52px] left-0 border-b-2 border-white z-50 transition-max-height duration-500 overflow-hidden"
-          : "fixed max-h-0 w-full top-[52px] left-0 z-50 transition-max-height duration-500 overflow-hidden"
+          ? "fixed bg-[#151a1e] w-full top-[52px] left-0 border-b-2 border-white z-50 overflow-hidden"
+          : "hidden"
       }
     >
       <div className="block items-center justify-center text-white">
