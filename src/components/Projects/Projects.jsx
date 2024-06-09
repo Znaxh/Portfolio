@@ -6,7 +6,7 @@ import image from '../../assets/Project1.webp'
 const projects = [
   {
     title: 'Youtube Summarizer',
-    description: 'Model Comparison of different youtube models using ROUGE',
+    description: 'Model Comparison of different youtube summarizer models using ROUGE',
     link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
     demolink: 'https://youtubesummarizermodelcomparison-miwyvm7xgfyeuirzw9spal.streamlit.app/',
     image: image
