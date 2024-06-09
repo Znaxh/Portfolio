@@ -1,7 +1,7 @@
 import React from "react";
-import Intro from "../components/Home/Intro";
+import Intro from "./Intro";
 import Typewriter from "typewriter-effect";
-import { Sparkles } from "./Sparkles";
+import { Sparkles } from "../Sparkles";
 
 export default function Home() {
   return (

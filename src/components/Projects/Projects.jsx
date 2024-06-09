@@ -1,8 +1,7 @@
 // src/App.jsx
 import React from 'react';
-import ProjectPanel from '../components/Projects/ProjectPanels';
-import youtube from '../assets/Project1.png'
-import image from '../assets/Pending.png'
+import ProjectPanel from './ProjectPanels';
+import image from '../../assets/Project1.webp'
 
 const projects = [
   {
@@ -10,29 +9,8 @@ const projects = [
     description: 'Model Comparison of different youtube models using ROUGE',
     link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
     demolink: 'https://youtubesummarizermodelcomparison-miwyvm7xgfyeuirzw9spal.streamlit.app/',
-    image: youtube
-  },
-  {
-    title: 'Project Two',
-    description: 'This is the second project description.',
-    link: 'https://example.com/project-two',
-    demolink: 'https://google.com',
     image: image
   },
-  {
-    title: 'Project Three',
-    description: 'This is the first project description.',
-    link: 'https://example.com/project-one',
-    demolink: 'https://google.com',
-    image: image
-  },
-  {
-    title: 'Project Four',
-    description: 'This is the first project description.',
-    link: 'https://example.com/project-one',
-    demolink: 'https://google.com',
-    image: image
-  }
 ];
 
 const Projects = () => {

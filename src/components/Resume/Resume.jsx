@@ -1,6 +1,6 @@
 import React from 'react'
-import Downloadcv from '../components/Resume/Downloadcv'
-import ResumeFile from '../components/Resume/ResumeFile'
+import Downloadcv from './Downloadcv'
+import ResumeFile from './ResumeFile'
 
 const Resume = () => {
   return (

@@ -15,10 +15,8 @@ html, body {
 
 .comic-grid {
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    padding-left: 1rem; /* Set left padding */
-    padding-right: 1rem; /* Set right padding */
 }
 .comic-panel {
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
@@ -87,5 +85,4 @@ box-shadow: 10px 25px 10px #000; /* Smaller shadow on hover */
     color: #1d4ed8;
     text-decoration: underline;
 }  
-
 

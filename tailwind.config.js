@@ -22,11 +22,11 @@ module.exports = {
         secondary: '#ffed4a',
         danger: '#e3342f',
       },
+      
     },
   },
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
-      // Plugin for background grid
       matchUtilities(
         {
           "bg-grid": (value) => ({

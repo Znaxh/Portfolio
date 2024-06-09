@@ -1,5 +1,5 @@
 import React from 'react'
-import resumeimage from '../../assets/Anurag_Pratap_Singh(IIITNR)_Resume_page-0001.jpg'
+import resumeimage from '../../assets/Anurag_Pratap_Singh(IIITNR)_Resume.webp'
 
 const ResumeFile = () => {
   return (
