@@ -46,7 +46,7 @@ const Footer = () => {
             className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-full border-2 border-gray-500 hover:bg-gray-700 hover:border-white transition transform hover:scale-105"
             type="button"
             onClick={() => {
-              window.location.href = "mailto:anuragpratapsingh.4845@gmail.com";
+              window.location.href = "mailto:Znaxxh@gmail.com";
             }}
           >
             EMAIL
