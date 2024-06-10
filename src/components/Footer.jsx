@@ -66,7 +66,7 @@ const Footer = () => {
             className="flex space-x-2 place-content-evenly px-4 py-2 text-xl text-[#72aaf3] rounded-md border-2 border-[#4391f9] hover:bg-[#5a9bf152] hover:border-[#72aaf3] transition transform hover:scale-105"
             type="button"
             onClick={() => {
-              window.open("https://github.com/AnuragSingh4845/port", "_blank");
+              window.open("https://github.com/Znaxh/Portfolio", "_blank");
             }}
           >
             <CgGitFork />
