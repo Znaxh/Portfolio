@@ -2,21 +2,29 @@
 import React from 'react';
 import ProjectPanel from './ProjectPanels';
 import image from '../../assets/Project1.webp'
+import algo from '../../assets/final.webp'
 
 const projects = [
   {
     title: 'Youtube Summarizer',
     description: 'Model Comparison of different youtube summarizer models using ROUGE',
-    link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
+    link: 'https://github.com/Znaxh/Youtube_Summarizer_Model_Comparison',
     demolink: 'https://youtubesummarizermodelcomparison-miwyvm7xgfyeuirzw9spal.streamlit.app/',
     image: image
+  },
+  {
+    title: 'Algorithm Visualizer',
+    description: 'Visual way to understand the working of algorithms',
+    link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
+    demolink: 'https://github.com/Znaxh/Algo-Visualizer',
+    image: algo
   },
 ];
 
 const Projects = () => {
   return (
     <div className="">
-      <div className="absolute font-raleway inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500" />
+      <div className="absolute font-raleway  inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500" />
       <div className="comic-grid mb-4">
         {projects.map((project, index) => (
           <ProjectPanel

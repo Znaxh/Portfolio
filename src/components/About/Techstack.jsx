@@ -9,6 +9,7 @@ import {
   DiGit,
 } from "react-icons/di";
 import { SiThreedotjs } from "react-icons/si";
+import { FaBootstrap } from "react-icons/fa";
 
 const Techstack = () => {
   return (
@@ -41,6 +42,9 @@ const Techstack = () => {
         </div>
         <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center transition-transform hover:scale-110">
           <SiThreedotjs className="text-white"/>
+        </div>
+        <div className="text-6xl border border-white rounded-md w-48 h-28 py-2 flex items-center justify-center transition-transform hover:scale-110">
+          <FaBootstrap className="text-white"/>
         </div>
       </div>
     </div>
