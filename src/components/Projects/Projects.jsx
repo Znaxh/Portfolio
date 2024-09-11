@@ -15,8 +15,8 @@ const projects = [
   {
     title: 'Algorithm Visualizer',
     description: 'Visual way to understand the working of algorithms',
-    link: 'https://github.com/AnuragSingh4845/Youtube_Summarizer_Model_Comparison',
-    demolink: 'https://github.com/Znaxh/Algo-Visualizer',
+    link: 'https://github.com/Znaxh/Algo-Visualizer',
+    demolink: 'https://imagine-algo.netlify.app/',
     image: algo
   },
 ];

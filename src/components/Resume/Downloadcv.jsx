@@ -8,7 +8,7 @@ const Downloadcv = () => {
         className="flex space-x-2 place-content-evenly px-4 py-2 md:px-6 text-sm font-bold rounded-md my-4 border-2 border-gray-500 hover:bg-gray-700 hover:border-white"
         onClick={() => {
           window.open(
-            "https://docs.google.com/document/d/19lCRuUlqSfZow5Q-XSm-XjNW3Vb9DyQTLRIH-9TNpbQ/edit?usp=sharing",
+            "https://drive.google.com/file/d/1kEhgU9wS9Cxj_uRioF0BwAuOoxVQHxTx/view?usp=sharing",
             "_blank"
           );
         }}
