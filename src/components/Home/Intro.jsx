@@ -17,11 +17,11 @@ const Intro = () => {
         </div>
         <div className="text-lg leading-relaxed">
           I am fluent in classics like <span className="text-indigo-200 font-semibold">C++</span>, 
-          <span className="text-indigo-200 font-semibold"> Javascript</span>, and <span className="text-indigo-200 font-semibold">Go</span>.
+          <span className="text-indigo-200 font-semibold"> Javascript</span>, and <span className="text-indigo-200 font-semibold">Python</span>.
         </div>
         <div className="text-lg leading-relaxed">
           My field of interest includes building new Web Technologies and Products, as well as areas related to
-          <span className="text-indigo-200 font-semibold"> Blockchain</span>.
+          <span className="text-indigo-200 font-semibold"> Cybersecurity</span>.
         </div>
       </div>
     </div>
