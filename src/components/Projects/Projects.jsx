@@ -19,6 +19,13 @@ const projects = [
     demolink: 'https://imagine-algo.netlify.app/',
     image: algo
   },
+  {
+    title: 'Dev Secure',
+    description: 'AI-driven web app that detects code vulnerabilities',
+    link: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
+    demolink: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
+    image: 
+  },
 ];
 
 const Projects = () => {
