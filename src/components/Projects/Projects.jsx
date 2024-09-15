@@ -25,7 +25,11 @@ const projects = [
     description: 'AI-driven web app that detects code vulnerabilities',
     link: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
     demolink: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
+<<<<<<< HEAD
     image: dev_secure
+=======
+    image: 
+>>>>>>> 9715590bae4313dd61ccaabb7e3735c6b8b5d5b7
   },
 ];
 
