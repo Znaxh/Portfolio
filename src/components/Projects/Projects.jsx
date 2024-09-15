@@ -2,6 +2,7 @@
 import React from 'react';
 import ProjectPanel from './ProjectPanels';
 import image from '../../assets/Project1.webp'
+import dev_secure from '../../assets/Project1.webp'
 import algo from '../../assets/final.webp'
 
 const projects = [
@@ -18,6 +19,13 @@ const projects = [
     link: 'https://github.com/Znaxh/Algo-Visualizer',
     demolink: 'https://imagine-algo.netlify.app/',
     image: algo
+  },
+  {
+    title: 'Dev Secure',
+    description: 'AI-driven web app that detects code vulnerabilities',
+    link: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
+    demolink: 'https://github.com/Znaxh/Devsecure_Hack-a-sol',
+    image: dev_secure
   },
 ];
 
