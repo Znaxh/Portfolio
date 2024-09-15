@@ -2,7 +2,7 @@
 import React from 'react';
 import ProjectPanel from './ProjectPanels';
 import image from '../../assets/Project1.webp'
-import dev_secure from '../../assets/Project1.webp'
+import dev_secure from '../../assets/Project2.webp'
 import algo from '../../assets/final.webp'
 
 const projects = [
