@@ -1,0 +1,27 @@
+{
+  "name": "Anurag Pratap Singh - Portfolio",
+  "short_name": "APS Portfolio",
+  "description": "Portfolio of Anurag Pratap Singh - Data Science & AI Student",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["portfolio", "education", "technology"],
+  "lang": "en",
+  "scope": "/",
+  "id": "anurag-portfolio"
+}
