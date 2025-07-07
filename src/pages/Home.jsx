@@ -6,7 +6,7 @@ import Contact from '../components/sections/Contact'
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Hero />
       <About />
       <Skills />

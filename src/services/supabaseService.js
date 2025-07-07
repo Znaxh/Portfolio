@@ -14,7 +14,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true, data: result }
     } catch (error) {
-      console.error(`Error creating ${table}:`, error)
       return { success: false, error: error.message }
     }
   }
@@ -30,7 +29,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true, data: data || [] }
     } catch (error) {
-      console.error(`Error fetching ${table}:`, error)
       return { success: false, error: error.message, data: [] }
     }
   }
@@ -46,7 +44,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true, data }
     } catch (error) {
-      console.error(`Error fetching ${table} by id:`, error)
       return { success: false, error: error.message }
     }
   }
@@ -64,7 +61,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true, data: result }
     } catch (error) {
-      console.error(`Error updating ${table}:`, error)
       return { success: false, error: error.message }
     }
   }
@@ -80,7 +76,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true }
     } catch (error) {
-      console.error(`Error deleting ${table}:`, error)
       return { success: false, error: error.message }
     }
   }
@@ -160,7 +155,6 @@ class SupabaseService {
       if (error) throw error
       return { success: true, data: data || [] }
     } catch (error) {
-      console.error('Error fetching featured projects:', error)
       return { success: false, error: error.message, data: [] }
     }
   }
@@ -175,7 +169,6 @@ class SupabaseService {
         .maybeSingle()
 
       if (queryError) {
-        console.error('Error checking existing project:', queryError)
         return { success: false, error: queryError.message }
       }
 
@@ -197,7 +190,6 @@ class SupabaseService {
         created_at: new Date().toISOString()
       })
     } catch (error) {
-      console.error('Error creating featured project:', error)
       return { success: false, error: error.message }
     }
   }
@@ -220,7 +212,6 @@ class SupabaseService {
         .maybeSingle()
 
       if (queryError) {
-        console.error('Error checking existing project:', queryError)
         return { success: false, error: queryError.message }
       }
 
@@ -242,7 +233,6 @@ class SupabaseService {
         return { ...result, action: 'featured' }
       }
     } catch (error) {
-      console.error('Error toggling featured project:', error)
       return { success: false, error: error.message }
     }
   }
@@ -256,7 +246,6 @@ class SupabaseService {
       await Promise.all(updates)
       return { success: true }
     } catch (error) {
-      console.error('Error updating project order:', error)
       return { success: false, error: error.message }
     }
   }
@@ -296,7 +285,6 @@ class SupabaseService {
         }
       }
     } catch (error) {
-      console.error('Error fetching all data:', error)
       return { success: false, error: error.message }
     }
   }

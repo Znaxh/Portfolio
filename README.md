@@ -1,4 +1,4 @@
-# Anurag Pratap Singh - Portfolio Website
+# Portfolio Website
 
 A modern, responsive portfolio website built with React, Vite, and TailwindCSS. Features dark mode support, GitHub API integration, admin panel, and interactive resume.
 
@@ -93,9 +93,9 @@ npm run build
 
 ## 🔐 Admin Panel
 
-Access the admin panel at `/admin/login` with demo credentials:
-- Email: `admin@portfolio.com`
-- Password: `admin123`
+Access the admin panel at `/admin/login` with your configured Firebase credentials:
+- Email: Set via `VITE_ADMIN_EMAIL` environment variable
+- Password: Set during Firebase user creation
 
 Features:
 - View repository statistics

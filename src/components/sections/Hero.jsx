@@ -46,7 +46,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden w-full max-w-full">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900/20"></div>
 
@@ -54,8 +54,8 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
+            x: [0, 50, 0],
+            y: [0, -50, 0],
           }}
           transition={{
             duration: 20,
@@ -63,11 +63,12 @@ const Hero = () => {
             ease: "linear"
           }}
           className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl"
+          style={{ willChange: 'transform' }}
         />
         <motion.div
           animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
+            x: [0, -50, 0],
+            y: [0, 50, 0],
           }}
           transition={{
             duration: 25,
@@ -75,6 +76,7 @@ const Hero = () => {
             ease: "linear"
           }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl"
+          style={{ willChange: 'transform' }}
         />
       </div>
 
@@ -83,10 +85,10 @@ const Hero = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="text-center relative z-10 max-w-4xl mx-auto"
+        className="text-center relative z-10 max-w-4xl mx-auto w-full px-2"
       >
         <motion.div variants={itemVariants} className="mb-6">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 break-words">
             Hello, I'm{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
               Anurag Pratap Singh

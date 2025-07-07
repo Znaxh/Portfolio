@@ -26,11 +26,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}
-          <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+          {/* <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
             <span>© {currentYear} Portfolio. Made with</span>
             <Heart size={16} className="text-red-500" />
             <span>using React & Tailwind CSS</span>
-          </div>
+          </div> */}
 
           {/* Social Links */}
           <div className="flex items-center space-x-4">

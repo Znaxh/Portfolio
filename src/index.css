@@ -1,1 +1,100 @@
 @import "tailwindcss";
+
+/* Custom utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Prevent horizontal overflow on all devices */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.navbar-container {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Prevent layout shifts and white space issues */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* Ensure consistent font loading */
+body {
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent flash of unstyled content */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth transitions for all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent any element from causing horizontal overflow */
+*, *::before, *::after {
+  max-width: 100%;
+}
+
+/* Fix potential margin collapse issues */
+section {
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure proper spacing between sections */
+section:not(:first-child) {
+  margin-top: 0;
+}
+
+/* Prevent text from overflowing */
+h1, h2, h3, h4, h5, h6, p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure containers don't exceed viewport */
+.container, .max-w-4xl, .max-w-6xl, .max-w-7xl {
+  max-width: calc(100vw - 2rem);
+}
+
+/* Mobile navbar fixes */
+@media (max-width: 768px) {
+  .navbar-container {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Ensure mobile menu spans full viewport width */
+  .mobile-nav-full-width {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+  }
+}

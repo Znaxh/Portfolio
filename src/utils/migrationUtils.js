@@ -33,7 +33,6 @@ export class FeaturedProjectsMigration {
       }
       return []
     } catch (error) {
-      console.error('Error parsing localStorage featured projects:', error)
       return []
     }
   }
@@ -69,28 +68,23 @@ export class FeaturedProjectsMigration {
     try {
       // Check if migration already completed
       if (this.isMigrationCompleted()) {
-        console.log('Migration already completed')
         return { success: true, message: 'Migration already completed', migrated: 0 }
       }
 
       // Get projects from localStorage
       const localProjects = this.getLocalStorageProjects()
-      
+
       if (localProjects.length === 0) {
-        console.log('No projects found in localStorage to migrate')
         this.markMigrationCompleted()
         return { success: true, message: 'No projects to migrate', migrated: 0 }
       }
-
-      console.log(`Found ${localProjects.length} projects to migrate`)
 
       // Transform and migrate each project
       const migrationResults = []
       for (let i = 0; i < localProjects.length; i++) {
         const project = localProjects[i]
         const transformedProject = this.transformProjectData(project, i)
-        
-        console.log(`Migrating project: ${project.name}`)
+
         const result = await supabaseService.createFeaturedProject(transformedProject)
         
         migrationResults.push({
@@ -98,10 +92,6 @@ export class FeaturedProjectsMigration {
           success: result.success,
           error: result.error
         })
-
-        if (!result.success) {
-          console.error(`Failed to migrate ${project.name}:`, result.error)
-        }
       }
 
       // Check migration results
@@ -111,19 +101,17 @@ export class FeaturedProjectsMigration {
       if (failed === 0) {
         // All migrations successful
         this.markMigrationCompleted()
-        console.log(`Successfully migrated ${successful} projects`)
-        return { 
-          success: true, 
-          message: `Successfully migrated ${successful} projects`, 
+        return {
+          success: true,
+          message: `Successfully migrated ${successful} projects`,
           migrated: successful,
           results: migrationResults
         }
       } else {
         // Some migrations failed
-        console.warn(`Migration completed with ${failed} failures out of ${localProjects.length} projects`)
-        return { 
-          success: false, 
-          message: `Migration completed with ${failed} failures`, 
+        return {
+          success: false,
+          message: `Migration completed with ${failed} failures`,
           migrated: successful,
           failed: failed,
           results: migrationResults
@@ -131,11 +119,10 @@ export class FeaturedProjectsMigration {
       }
 
     } catch (error) {
-      console.error('Migration failed:', error)
-      return { 
-        success: false, 
-        message: 'Migration failed', 
-        error: error.message 
+      return {
+        success: false,
+        message: 'Migration failed',
+        error: error.message
       }
     }
   }
@@ -147,12 +134,10 @@ export class FeaturedProjectsMigration {
     try {
       if (this.isMigrationCompleted()) {
         localStorage.removeItem(this.LOCALSTORAGE_KEY)
-        console.log('Cleaned up localStorage featured projects data')
         return true
       }
       return false
     } catch (error) {
-      console.error('Error cleaning up localStorage:', error)
       return false
     }
   }
@@ -162,7 +147,6 @@ export class FeaturedProjectsMigration {
    */
   static resetMigration() {
     localStorage.removeItem(this.MIGRATION_KEY)
-    console.log('Migration reset - will run again on next attempt')
   }
 
   /**

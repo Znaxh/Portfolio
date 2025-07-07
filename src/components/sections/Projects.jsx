@@ -51,13 +51,11 @@ const Projects = () => {
           setProjects(transformedProjects)
         } else {
           // Fallback to GitHub service if Supabase fails
-          console.warn('Supabase fetch failed, falling back to GitHub service:', result.error)
           const featuredRepos = await githubService.getFeaturedRepositories()
           setProjects(featuredRepos)
         }
       } catch (err) {
         setError('Failed to fetch projects')
-        console.error('Error fetching projects:', err)
       } finally {
         setLoading(false)
       }
@@ -66,9 +64,7 @@ const Projects = () => {
     fetchProjects()
 
     // Set up real-time subscription for featured projects
-    const subscription = supabaseService.subscribeFeaturedProjects((payload) => {
-      console.log('Real-time update received:', payload)
-
+    const subscription = supabaseService.subscribeFeaturedProjects(() => {
       // Refetch projects when changes occur
       fetchProjects()
     })
@@ -113,14 +109,16 @@ const Projects = () => {
 
   if (loading) {
     return (
-      <section id="projects" className="py-20 px-4">
+      <section id="projects" className="py-20 px-4 min-h-[600px]">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             Featured <span className="text-blue-600 dark:text-blue-400">Projects</span>
           </h2>
-          <div className="flex items-center justify-center">
-            <Loader2 className="animate-spin h-8 w-8 text-blue-600" />
-            <span className="ml-2 text-gray-600 dark:text-gray-400">Loading projects...</span>
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="flex items-center">
+              <Loader2 className="animate-spin h-8 w-8 text-blue-600" />
+              <span className="ml-2 text-gray-600 dark:text-gray-400">Loading projects...</span>
+            </div>
           </div>
         </div>
       </section>
@@ -141,7 +139,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-20 px-4 min-h-[600px]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

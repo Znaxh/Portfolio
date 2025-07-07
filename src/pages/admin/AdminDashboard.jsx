@@ -9,8 +9,7 @@ import {
   Briefcase,
   Plus,
   Edit,
-  Trash2,
-  Database
+  Trash2
 } from 'lucide-react'
 import { githubService } from '../../services/githubService'
 import { supabaseService } from '../../services/supabaseService'
@@ -30,7 +29,6 @@ const AdminDashboard = () => {
   const [education, setEducation] = useState([])
   const [experience, setExperience] = useState([])
   const [supabaseLoading, setSupabaseLoading] = useState(false)
-  const [migrationStatus, setMigrationStatus] = useState(null)
 
   // Modal states
   const [showModal, setShowModal] = useState(false)
@@ -77,9 +75,7 @@ const AdminDashboard = () => {
   const performMigration = async () => {
     try {
       if (!FeaturedProjectsMigration.isMigrationCompleted()) {
-        console.log('Starting featured projects migration...')
         const result = await FeaturedProjectsMigration.performFullMigration()
-        setMigrationStatus(result)
 
         if (result.success) {
           showNotification('success', `Migration completed: ${result.migrated} projects migrated`)
@@ -90,7 +86,6 @@ const AdminDashboard = () => {
         }
       }
     } catch (error) {
-      console.error('Migration error:', error)
       showNotification('error', 'Migration failed')
     }
   }
@@ -113,7 +108,6 @@ const AdminDashboard = () => {
         showNotification('success', 'All featured projects cleared')
       }
     } catch (error) {
-      console.error('Error clearing featured repos:', error)
       showNotification('error', 'Failed to clear featured projects')
     }
   }
@@ -126,7 +120,6 @@ const AdminDashboard = () => {
       localStorage.removeItem('featured_repos')
       navigate('/admin/login')
     } catch (error) {
-      console.error('Logout error:', error)
       showNotification('error', 'Logout failed')
     }
   }
@@ -137,7 +130,6 @@ const AdminDashboard = () => {
       const repos = await githubService.getRepositories()
       setRepositories(repos)
     } catch (error) {
-      console.error('Error fetching repositories:', error)
       showNotification('error', 'Failed to fetch repositories')
     } finally {
       setLoading(false)
@@ -166,14 +158,11 @@ const AdminDashboard = () => {
           private: project.is_private
         }))
 
-        // console.log('Loaded featured repos from Supabase:', transformedRepos.map(repo => repo.name))
         setFeaturedRepos(transformedRepos)
       } else {
-        console.error('Failed to load featured repos:', result.error)
         setFeaturedRepos([])
       }
     } catch (error) {
-      console.error('Error loading featured repos:', error)
       setFeaturedRepos([])
     }
   }
@@ -191,7 +180,6 @@ const AdminDashboard = () => {
         showNotification('error', 'Failed to fetch data from database')
       }
     } catch (error) {
-      console.error('Error fetching Supabase data:', error)
       showNotification('error', 'Database connection error')
     } finally {
       setSupabaseLoading(false)
@@ -287,7 +275,6 @@ const AdminDashboard = () => {
       }
       closeModal()
     } catch (error) {
-      console.error('Error submitting form:', error)
       showNotification('error', 'An error occurred')
     }
   }
@@ -322,7 +309,6 @@ const AdminDashboard = () => {
         }
       }
     } catch (error) {
-      console.error('Error deleting item:', error)
       showNotification('error', 'An error occurred while deleting')
     }
   }
@@ -418,7 +404,6 @@ const AdminDashboard = () => {
         }
       }
     } catch (error) {
-      console.error('Error toggling featured repo:', error)
       showNotification('error', 'An error occurred while updating featured projects')
     }
   }
@@ -513,7 +498,7 @@ const AdminDashboard = () => {
           {/* Projects Tab */}
           {activeTab === 'projects' && (
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 ">
                 Manage Featured Projects
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
@@ -554,24 +539,26 @@ const AdminDashboard = () => {
                         </p>
                       </div>
                     ) : (
-                      <div className="grid gap-4 md:grid-cols-2">
+                      <div className="grid gap-4 md:grid-cols-2 auto-rows-fr">
                         {featuredRepos
                           .filter(repo => repo && repo.id && repo.name) // Filter out invalid repos
                           .map((repo) => (
-                            <div key={repo.id} className="border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex-1">
-                                  <div className="flex items-center space-x-2 mb-2">
-                                    <Github size={16} className="text-green-600" />
-                                    <h4 className="font-bold text-lg text-gray-900 dark:text-white">{repo.name}</h4>
-                                    {repo.private && (
-                                      <span className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">Private</span>
-                                    )}
+                            <div key={repo.id} className="border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 rounded-lg p-4 h-full">
+                              <div className="flex flex-col h-full">
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-start justify-between mb-2">
+                                    <div className="flex items-center space-x-2 min-w-0 flex-1">
+                                      <Github size={16} className="text-green-600 flex-shrink-0" />
+                                      <h4 className="font-bold text-lg text-gray-900 dark:text-white truncate">{repo.name}</h4>
+                                      {repo.private && (
+                                        <span className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded flex-shrink-0">Private</span>
+                                      )}
+                                    </div>
                                   </div>
-                                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 break-words">
                                     {repo.description || 'No description available'}
                                   </p>
-                                  <div className="flex items-center space-x-4 text-xs text-gray-500">
+                                  <div className="flex items-center flex-wrap gap-2 text-xs text-gray-500 mb-3">
                                     {repo.language && (
                                       <span className="flex items-center space-x-1">
                                         <div className="w-2 h-2 rounded-full bg-blue-500"></div>
@@ -584,7 +571,7 @@ const AdminDashboard = () => {
                                 </div>
                                 <button
                                   onClick={() => toggleFeaturedRepo(repo)}
-                                  className="ml-4 px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+                                  className="w-full px-3 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
                                 >
                                   Remove
                                 </button>
@@ -615,24 +602,26 @@ const AdminDashboard = () => {
                         </button>
                       </div>
                     ) : (
-                      <div className="grid gap-4 md:grid-cols-2">
+                      <div className="grid gap-4 md:grid-cols-2 auto-rows-fr">
                         {repositories
                           .filter(repo => !featuredRepos.find(f => f.id === repo.id))
                           .map((repo) => (
-                            <div key={repo.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex-1">
-                                  <div className="flex items-center space-x-2 mb-2">
-                                    <Github size={16} className="text-gray-600" />
-                                    <h4 className="font-semibold text-gray-900 dark:text-white">{repo.name}</h4>
-                                    {repo.private && (
-                                      <span className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">Private</span>
-                                    )}
+                            <div key={repo.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-full">
+                              <div className="flex flex-col h-full">
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-start justify-between mb-2">
+                                    <div className="flex items-center space-x-2 min-w-0 flex-1">
+                                      <Github size={16} className="text-gray-600 flex-shrink-0" />
+                                      <h4 className="font-semibold text-gray-900 dark:text-white truncate">{repo.name}</h4>
+                                      {repo.private && (
+                                        <span className="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded flex-shrink-0">Private</span>
+                                      )}
+                                    </div>
                                   </div>
-                                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 break-words">
                                     {repo.description || 'No description available'}
                                   </p>
-                                  <div className="flex items-center space-x-4 text-xs text-gray-500">
+                                  <div className="flex items-center flex-wrap gap-2 text-xs text-gray-500 mb-3">
                                     {repo.language && (
                                       <span className="flex items-center space-x-1">
                                         <div className="w-2 h-2 rounded-full bg-blue-500"></div>
@@ -645,7 +634,7 @@ const AdminDashboard = () => {
                                 </div>
                                 <button
                                   onClick={() => toggleFeaturedRepo(repo)}
-                                  className="ml-4 px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
+                                  className="w-full px-3 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
                                 >
                                   Feature
                                 </button>

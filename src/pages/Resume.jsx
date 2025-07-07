@@ -40,7 +40,6 @@ const Resume = () => {
       if (result.success) {
         setSupabaseData(result.data)
       } else {
-        console.error('Failed to fetch resume data:', result.error)
         // Fallback to static data if Supabase fails
         setSupabaseData({
           certificates: staticCertifications,
@@ -49,7 +48,6 @@ const Resume = () => {
         })
       }
     } catch (error) {
-      console.error('Error fetching resume data:', error)
       // Fallback to static data
       setSupabaseData({
         certificates: staticCertifications,

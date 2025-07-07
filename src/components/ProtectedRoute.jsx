@@ -15,7 +15,6 @@ const ProtectedRoute = ({ children }) => {
           setIsAuthenticated(!!user.email)
         }
       } catch (error) {
-        console.error('Auth check failed:', error)
         setIsAuthenticated(false)
       } finally {
         setLoading(false)

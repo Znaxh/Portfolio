@@ -33,7 +33,6 @@ class FirebaseAuthService {
         }
       }
     } catch (error) {
-      console.error('Sign in error:', error)
       return {
         success: false,
         error: error.message
@@ -47,7 +46,6 @@ class FirebaseAuthService {
       await signOut(auth)
       return { success: true }
     } catch (error) {
-      console.error('Sign out error:', error)
       return {
         success: false,
         error: error.message
@@ -87,7 +85,6 @@ class FirebaseAuthService {
         user: userCredential.user
       }
     } catch (error) {
-      console.error('Create user error:', error)
       return {
         success: false,
         error: error.message

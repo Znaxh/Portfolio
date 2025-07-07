@@ -53,17 +53,18 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-container ${
         scrolled
           ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
           : 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm md:bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 w-full">
+        <div className="flex justify-between items-center h-14 md:h-20">
           {/* Logo */}
-          <Link to="/" className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">
-            Portfolio
+          <Link to="/" className="text-lg md:text-2xl font-bold text-blue-600 dark:text-blue-400 truncate flex-shrink-0">
+            <span className="hidden sm:inline">Portfolio</span>
+            <span className="sm:hidden">Portfolio</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -81,47 +82,57 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 shadow-sm"
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 shadow-sm"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={22} /> : <Menu size={22} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+      </div>
+
+      {/* Mobile Navigation - Outside container for full width */}
+      {isOpen && (
         <motion.div
-          initial={false}
-          animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="md:hidden overflow-hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg"
+          className={`md:hidden overflow-hidden mobile-nav-full-width ${
+            scrolled
+              ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md'
+              : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm'
+          }`}
         >
-          <div className="px-6 py-6 space-y-3">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
-                transition={{ duration: 0.2, delay: isOpen ? index * 0.1 : 0 }}
-              >
-                <Link
-                  to={item.href}
-                  onClick={() => {
-                    handleNavClick(item.href, item.section)
-                    setIsOpen(false)
-                  }}
-                  className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all duration-200 font-medium text-lg"
+          <div className="border-t border-gray-200/30 dark:border-gray-700/30">
+            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: index * 0.1 }}
                 >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    to={item.href}
+                    onClick={() => {
+                      handleNavClick(item.href, item.section)
+                      setIsOpen(false)
+                    }}
+                    className="block w-full px-3 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200 font-medium text-base"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
-      </div>
+      )}
     </motion.nav>
   )
 }

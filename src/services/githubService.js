@@ -5,8 +5,16 @@ export const githubService = {
   // Fetch user's public repositories
   async getRepositories() {
     try {
-      const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`)
-      
+      const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Portfolio-Website'
+        },
+        credentials: 'omit', // Don't send cookies
+        mode: 'cors'
+      })
+
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`)
       }
@@ -34,7 +42,6 @@ export const githubService = {
         }))
         .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)) // Sort by most recently updated
     } catch (error) {
-      console.error('Error fetching repositories:', error)
       throw error
     }
   },
@@ -42,15 +49,22 @@ export const githubService = {
   // Fetch repository languages
   async getRepositoryLanguages(repoName) {
     try {
-      const response = await fetch(`${GITHUB_API_BASE}/repos/${GITHUB_USERNAME}/${repoName}/languages`)
-      
+      const response = await fetch(`${GITHUB_API_BASE}/repos/${GITHUB_USERNAME}/${repoName}/languages`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Portfolio-Website'
+        },
+        credentials: 'omit',
+        mode: 'cors'
+      })
+
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`)
       }
       
       return await response.json()
     } catch (error) {
-      console.error('Error fetching repository languages:', error)
       return {}
     }
   },
@@ -70,7 +84,6 @@ export const githubService = {
         download_url: readme.download_url
       }
     } catch (error) {
-      console.error('Error fetching repository README:', error)
       return null
     }
   },
@@ -78,8 +91,16 @@ export const githubService = {
   // Get user profile information
   async getUserProfile() {
     try {
-      const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`)
-      
+      const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Portfolio-Website'
+        },
+        credentials: 'omit',
+        mode: 'cors'
+      })
+
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`)
       }
@@ -98,7 +119,6 @@ export const githubService = {
         updated_at: profile.updated_at
       }
     } catch (error) {
-      console.error('Error fetching user profile:', error)
       throw error
     }
   },
@@ -137,18 +157,15 @@ export const githubService = {
       // Fallback: check localStorage for migration purposes
       const featuredRepos = JSON.parse(localStorage.getItem('featured_repos') || '[]')
       if (featuredRepos.length > 0) {
-        console.warn('Using localStorage fallback - migration may be needed')
         return featuredRepos.filter(repo => !repo.private)
       }
 
       // Default: return top 6 public repositories by stars and recent activity
-      console.log('No featured projects found, using default selection')
       const allRepos = await this.getRepositories()
       return allRepos
         .filter(repo => !repo.private && (repo.stargazers_count > 0 || repo.description))
         .slice(0, 6)
     } catch (error) {
-      console.error('Error fetching featured repositories:', error)
       return []
     }
   }
