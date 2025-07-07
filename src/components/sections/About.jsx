@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 import {
   Code,
   Palette,
@@ -10,12 +11,15 @@ import {
   Target,
   Users
 } from 'lucide-react'
+import profileImg from '../../assets/images/profile.webp'
 
 const About = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   })
+
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   const highlights = [
     {
@@ -131,17 +135,32 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
             className="relative lg:mr-16 lg:ml-16"
           >
-            <div className="relative mx-auto w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
-              <div className="text-white text-6xl font-bold">A</div>
-              {/* Replace this with your actual photo */}
-              <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
+            <div className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden">
+              {/* Fallback background with "A" */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
+                <div className="text-white text-6xl font-bold">A</div>
+                <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
+              </div>
+
+              {/* Actual profile image */}
+              <img
+                src={profileImg}
+                alt="Anurag Pratap Singh"
+                className={`absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-500 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                loading="eager"
+                fetchPriority="high"
+                onLoad={() => setImageLoaded(true)}
+                onError={() => setImageLoaded(false)}
+              />
             </div>
 
             {/* Floating elements */}
