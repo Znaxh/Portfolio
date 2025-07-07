@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Code,
   Palette,
@@ -12,6 +12,7 @@ import {
   Users
 } from 'lucide-react'
 import profileImg from '../../assets/images/profile.webp'
+import { supabaseService } from '../../services/supabaseService'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -20,6 +21,24 @@ const About = () => {
   })
 
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [certificateCount, setCertificateCount] = useState(4) // Default fallback
+
+  // Fetch certificate count from Supabase
+  useEffect(() => {
+    const fetchCertificateCount = async () => {
+      try {
+        const result = await supabaseService.getCertificates()
+        if (result.success && result.data) {
+          setCertificateCount(result.data.length)
+        }
+      } catch (error) {
+        console.error('Error fetching certificates:', error)
+        // Keep the default fallback value
+      }
+    }
+
+    fetchCertificateCount()
+  }, [])
 
   const highlights = [
     {
@@ -48,7 +67,7 @@ const About = () => {
     { number: "2024", label: "B.Tech Student" },
     { number: "10+", label: "ML Projects" },
     { number: "15+", label: "Technologies" },
-    { number: "4+", label: "Certifications" }
+    { number: `${certificateCount}+`, label: "Certifications" }
   ]
 
   const containerVariants = {
