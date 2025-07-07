@@ -87,14 +87,14 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mr-16 lg:ml-32 gap-8 md:gap-12 items-center mb-16 md:mb-20">
           {/* About Text */}
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 px-2 md:px-0"
+            className="space-y-6 px-2 md:px-4 lg:px-0 lg:pr-16 xl:pr-20"
           >
             <div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
@@ -136,7 +136,7 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative lg:mr-16 lg:ml-16"
           >
             <div className="relative mx-auto w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
               <div className="text-white text-6xl font-bold">A</div>
