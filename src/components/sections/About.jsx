@@ -64,7 +64,7 @@ const About = () => {
   ]
 
   const stats = [
-    { number: "2024", label: "B.Tech Student" },
+    { number: "2026", label: "B.Tech Student" },
     { number: "10+", label: "ML Projects" },
     { number: "15+", label: "Technologies" },
     { number: `${certificateCount}+`, label: "Certifications" }
