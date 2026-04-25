@@ -1,31 +1,33 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Home from './pages/Home'
-import Resume from './pages/Resume'
-import NotFound from './pages/NotFound'
-import NeuralBackground from './components/effects/NeuralBackground'
-import CustomCursor from './components/effects/CustomCursor'
-import LoadingScreen from './components/effects/LoadingScreen'
-import KonamiEasterEgg from './components/effects/KonamiEasterEgg'
-import MatrixEasterEgg from './components/effects/MatrixEasterEgg'
-import ScrollToTop from './components/util/ScrollToTop'
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import CursorTrail from './components/effects/CursorTrail';
+import useEasterEggs from './hooks/useEasterEggs';
+import ScrollToTop from './components/util/ScrollToTop';
+import LoadingScreen from './components/effects/LoadingScreen';
+
+const AskAnurag = lazy(() => import('./components/ui/AskAnurag'));
 
 export default function App() {
+  const { EasterEggComponents } = useEasterEggs();
+
   return (
     <Router>
-      <NeuralBackground />
-      <CustomCursor />
+      <CursorTrail />
+      {EasterEggComponents}
       <LoadingScreen />
+      <Suspense fallback={null}>
+        <AskAnurag />
+      </Suspense>
       <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
-      <KonamiEasterEgg />
-      <MatrixEasterEgg />
     </Router>
-  )
+  );
 }
