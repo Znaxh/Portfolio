@@ -1,0 +1,403 @@
+{
+  "meta": {
+    "title": "Anurag Pratap Singh — AI/ML Engineer",
+    "description": "Portfolio of Anurag Pratap Singh — Data Science & AI student at IIIT Raipur. Shipping ML systems, neural nets, and data products.",
+    "siteUrl": "https://anuragpratap.dev",
+    "ogImage": "/og-image.png"
+  },
+  "personal": {
+    "name": "Anurag Pratap Singh",
+    "handle": "Znaxh",
+    "initials": "APS",
+    "title": "AI/ML Engineer",
+    "subtitle": "Data Science & AI @ IIIT Raipur",
+    "tagline": "I train neural nets, break things, and occasionally get them to work.",
+    "email": "znaxxh@gmail.com",
+    "phone": "+91-7974398795",
+    "location": "Raipur, Chhattisgarh, India",
+    "timezone": "IST (UTC+5:30)",
+    "resumeUrl": "https://drive.google.com/file/d/1RiAO8hh5eOBW_DyA8sUOAjaJBV1UIrne/view?usp=sharing",
+    "resumeDownloadUrl": "https://drive.google.com/uc?export=download&id=1RiAO8hh5eOBW_DyA8sUOAjaJBV1UIrne"
+  },
+  "socials": [
+    { "id": "github", "label": "GitHub", "url": "https://github.com/Znaxh", "handle": "@Znaxh" },
+    { "id": "linkedin", "label": "LinkedIn", "url": "https://linkedin.com/in/znaxh", "handle": "in/znaxh" },
+    { "id": "kaggle", "label": "Kaggle", "url": "https://www.kaggle.com/znaxxh", "handle": "@znaxxh" },
+    { "id": "email", "label": "Email", "url": "mailto:znaxxh@gmail.com", "handle": "znaxxh@gmail.com" }
+  ],
+  "terminal": {
+    "prompt": "anurag@neural-net:~$",
+    "welcome": [
+      "Initializing session...",
+      "Loaded weights from ./anurag.ckpt",
+      "Type `help` to see available commands, or click one below.",
+      ""
+    ],
+    "commands": [
+      {
+        "name": "whoami",
+        "description": "Print bio and role",
+        "output": [
+          "Anurag Pratap Singh",
+          "Data Science & AI undergrad @ IIIT Raipur (2022 — 2026)",
+          "Focus: ML systems, applied deep learning, data products",
+          "Currently: building, breaking, and retraining"
+        ]
+      },
+      {
+        "name": "skills",
+        "description": "List my main stack",
+        "output": [
+          "Languages     : Python, JavaScript, C/C++, SQL",
+          "ML/AI         : PyTorch, TensorFlow, scikit-learn, XGBoost, HuggingFace",
+          "Data          : Pandas, NumPy, MLflow, DVC, OpenCV",
+          "Web           : React, FastAPI, Node.js, Streamlit",
+          "Infra         : Docker, Git, MongoDB, MySQL, GCP"
+        ]
+      },
+      {
+        "name": "projects",
+        "description": "Show featured projects",
+        "action": "scrollTo:#projects"
+      },
+      {
+        "name": "contact",
+        "description": "Jump to contact section",
+        "action": "scrollTo:#contact"
+      },
+      {
+        "name": "resume",
+        "description": "Open interactive resume",
+        "action": "navigate:/resume"
+      },
+      {
+        "name": "github",
+        "description": "Open my GitHub profile",
+        "action": "openUrl:https://github.com/Znaxh"
+      },
+      {
+        "name": "linkedin",
+        "description": "Open my LinkedIn",
+        "action": "openUrl:https://linkedin.com/in/znaxh"
+      },
+      {
+        "name": "sudo hire-me",
+        "description": "The most important command",
+        "output": [
+          "Permission granted.",
+          "Sending my availability to your inbox... (just kidding, use `contact` or email me)",
+          "znaxxh@gmail.com"
+        ]
+      },
+      {
+        "name": "clear",
+        "description": "Clear the terminal",
+        "action": "clear"
+      },
+      {
+        "name": "help",
+        "description": "List available commands",
+        "action": "help"
+      }
+    ]
+  },
+  "about": {
+    "greeting": "Hey, I'm Anurag.",
+    "paragraphs": [
+      "I build machine learning systems that do useful, sometimes ridiculous, things. Currently finishing my B.Tech in Data Science & AI at IIIT Raipur (class of 2026).",
+      "I care about the full lifecycle — data pipelines, training, evaluation, and actually shipping models behind an API that doesn't fall over. My favorite problems sit at the intersection of messy real-world data and tight latency budgets.",
+      "Outside of models: cybersecurity, building things in public, and writing Python that my future self won't hate."
+    ],
+    "badges": [
+      { "label": "PyTorch", "color": "#ee4c2c" },
+      { "label": "TensorFlow", "color": "#ff6f00" },
+      { "label": "Python", "color": "#3776ab" },
+      { "label": "React", "color": "#00f5ff" },
+      { "label": "FastAPI", "color": "#00ff88" },
+      { "label": "Docker", "color": "#2496ed" },
+      { "label": "HuggingFace", "color": "#ffd21e" },
+      { "label": "OpenCV", "color": "#5c3ee8" }
+    ],
+    "stats": [
+      { "label": "Years coding", "value": 5, "suffix": "+" },
+      { "label": "Models trained", "value": 40, "suffix": "+" },
+      { "label": "Projects shipped", "value": 12, "suffix": "" },
+      { "label": "Certifications", "value": 8, "suffix": "" }
+    ],
+    "traits": [
+      { "icon": "Brain", "text": "ML engineering end-to-end — data → training → deploy" },
+      { "icon": "Zap", "text": "Obsess over latency, reliability, and reproducibility" },
+      { "icon": "ShieldCheck", "text": "Cybersecurity mindset from CDAC internship" },
+      { "icon": "Coffee", "text": "Powered primarily by coffee and stubbornness" }
+    ]
+  },
+  "skills": {
+    "groups": [
+      {
+        "id": "ml",
+        "name": "ML / AI",
+        "color": "#00f5ff",
+        "skills": [
+          { "name": "PyTorch", "level": 85 },
+          { "name": "TensorFlow", "level": 82 },
+          { "name": "scikit-learn", "level": 92 },
+          { "name": "XGBoost", "level": 85 },
+          { "name": "CatBoost", "level": 78 },
+          { "name": "HuggingFace", "level": 75 },
+          { "name": "OpenCV", "level": 76 }
+        ]
+      },
+      {
+        "id": "lang",
+        "name": "Languages",
+        "color": "#a855f7",
+        "skills": [
+          { "name": "Python", "level": 95 },
+          { "name": "JavaScript", "level": 85 },
+          { "name": "C/C++", "level": 80 },
+          { "name": "SQL", "level": 85 },
+          { "name": "TypeScript", "level": 72 }
+        ]
+      },
+      {
+        "id": "data",
+        "name": "Data / MLOps",
+        "color": "#00ff88",
+        "skills": [
+          { "name": "Pandas", "level": 92 },
+          { "name": "NumPy", "level": 90 },
+          { "name": "MLflow", "level": 75 },
+          { "name": "DVC", "level": 72 },
+          { "name": "MongoDB", "level": 80 },
+          { "name": "MySQL", "level": 85 }
+        ]
+      },
+      {
+        "id": "web",
+        "name": "Web / Infra",
+        "color": "#ff5e84",
+        "skills": [
+          { "name": "React", "level": 85 },
+          { "name": "FastAPI", "level": 85 },
+          { "name": "Node.js", "level": 78 },
+          { "name": "Streamlit", "level": 90 },
+          { "name": "Docker", "level": 78 },
+          { "name": "GCP", "level": 68 },
+          { "name": "Git", "level": 92 }
+        ]
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "resume-ranker",
+      "name": "Resume Ranking System",
+      "tagline": "NLP-driven ATS that scores résumés against JDs",
+      "description": "Semantic resume screener: embeds candidates + job descriptions with transformer models, ranks matches with a hybrid retrieval + re-ranking pipeline, and serves results through a FastAPI backend with a React dashboard.",
+      "stack": ["Python", "FastAPI", "HuggingFace", "React", "PostgreSQL"],
+      "highlights": [
+        "Hybrid BM25 + embedding re-ranking",
+        "Explainable skill-gap breakdown per candidate",
+        "Sub-300ms response on 5k-resume corpus"
+      ],
+      "github": "https://github.com/Znaxh/Resume-Ranking-System",
+      "live": null,
+      "accent": "#00f5ff",
+      "featured": true,
+      "year": 2025
+    },
+    {
+      "id": "loglens",
+      "name": "LogLens",
+      "tagline": "Anomaly detection over noisy production logs",
+      "description": "Streaming log anomaly detector. Parses structured + semi-structured logs, clusters templates with Drain3, and flags deviations with an isolation forest + statistical baselines. Ships alerts to a simple dashboard.",
+      "stack": ["Python", "Drain3", "scikit-learn", "FastAPI", "Docker"],
+      "highlights": [
+        "Real-time template extraction",
+        "Unsupervised anomaly scoring",
+        "Containerized for easy drop-in"
+      ],
+      "github": "https://github.com/Znaxh/loglens",
+      "live": null,
+      "accent": "#00ff88",
+      "featured": true,
+      "year": 2025
+    },
+    {
+      "id": "justice-guide",
+      "name": "Justice Guide",
+      "tagline": "Legal-aid chatbot for Indian citizens",
+      "description": "RAG-powered assistant trained on Indian legal code and precedent. Helps users understand their rights, navigate procedures, and generate starter drafts for common filings. Guardrailed to avoid offering hard legal advice.",
+      "stack": ["Python", "LangChain", "LlamaIndex", "React", "FastAPI"],
+      "highlights": [
+        "RAG over curated legal corpus",
+        "Multi-lingual query handling (EN / HI)",
+        "Citation-grounded responses"
+      ],
+      "github": "https://github.com/Znaxh/Justice-Guide",
+      "live": null,
+      "accent": "#a855f7",
+      "featured": true,
+      "year": 2024
+    },
+    {
+      "id": "student-performance",
+      "name": "Student Performance Predictor",
+      "tagline": "End-to-end ML pipeline on academic data",
+      "description": "Predicts at-risk students using engagement + assessment data. Full MLOps flow — ingestion, feature engineering, hyperparameter tuning, MLflow tracking, and CatBoost deployment behind a Streamlit front-end.",
+      "stack": ["Python", "CatBoost", "MLflow", "Streamlit", "DVC"],
+      "highlights": [
+        "MLflow-tracked experiments",
+        "SHAP explanations per prediction",
+        "Streamlit dashboard for educators"
+      ],
+      "github": "https://github.com/Znaxh",
+      "live": null,
+      "accent": "#ff5e84",
+      "featured": true,
+      "year": 2024
+    },
+    {
+      "id": "medical-diagnosis",
+      "name": "AI Medical Diagnosis Assistant",
+      "tagline": "Symptom-aware triage with vision + text",
+      "description": "Multimodal assistant combining symptom text and image signals (X-ray / skin). Uses transfer learning on ImageNet backbones and a small LLM for symptom parsing. Built during a hackathon, kept alive because I like it.",
+      "stack": ["Python", "PyTorch", "OpenCV", "FastAPI", "React"],
+      "highlights": [
+        "Transfer-learned CNN backbones",
+        "LLM-powered symptom extraction",
+        "Responsible disclaimers baked in"
+      ],
+      "github": "https://github.com/Znaxh",
+      "live": null,
+      "accent": "#00f5ff",
+      "featured": false,
+      "year": 2024
+    },
+    {
+      "id": "portfolio",
+      "name": "This Portfolio",
+      "tagline": "The site you're reading right now",
+      "description": "React + Vite + Tailwind v4 single-page portfolio with a custom neural-network background, interactive terminal hero, skills constellation, and a few easter eggs. Zero backend. All animations respect prefers-reduced-motion.",
+      "stack": ["React", "Vite", "Tailwind v4", "Framer Motion", "Canvas"],
+      "highlights": [
+        "Canvas neural-net background",
+        "Interactive terminal hero",
+        "Konami + Matrix easter eggs"
+      ],
+      "github": "https://github.com/Znaxh",
+      "live": null,
+      "accent": "#a855f7",
+      "featured": false,
+      "year": 2026
+    }
+  ],
+  "experience": [
+    {
+      "id": "cdac-intern",
+      "type": "experience",
+      "role": "Virtual Cybersecurity Intern",
+      "org": "CDAC",
+      "location": "Remote",
+      "startDate": "Jun 2024",
+      "endDate": "Aug 2024",
+      "year": 2024,
+      "description": [
+        "Ran network monitoring + vulnerability scans (Wireshark, NMAP, Nuclei) and triaged 150+ issues",
+        "Used Google Dorks + DNS enumeration to harden web surface area",
+        "Led a six-week assessment exposing RDP/SMB vulnerabilities",
+        "Rolled out layered defenses improving resilience for 25+ applications"
+      ],
+      "technologies": ["Wireshark", "NMAP", "Nuclei", "Network Security", "Vuln Assessment"]
+    }
+  ],
+  "education": [
+    {
+      "id": "iiit-raipur",
+      "type": "education",
+      "role": "B.Tech — Data Science & Artificial Intelligence",
+      "org": "IIIT Raipur",
+      "location": "Raipur, Chhattisgarh",
+      "startDate": "2022",
+      "endDate": "2026",
+      "year": 2022,
+      "description": [
+        "Core coursework: ML, DL, Statistics, DSA, Linear Algebra, Databases",
+        "Active in ML clubs, hackathons, and open-source contributions",
+        "Focus on applied deep learning and MLOps"
+      ],
+      "technologies": ["Python", "ML", "Deep Learning", "Statistics"]
+    },
+    {
+      "id": "dronacharya",
+      "type": "education",
+      "role": "Senior Secondary (XII) — Science",
+      "org": "Dronacharya Public School",
+      "location": "Raipur, Chhattisgarh",
+      "startDate": "2019",
+      "endDate": "2021",
+      "year": 2019,
+      "description": [
+        "Science stream — Mathematics, Physics, Chemistry",
+        "Started self-learning Python and competitive programming here"
+      ],
+      "technologies": ["Mathematics", "Physics", "Computer Science"]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "kaggle-intermediate-ml",
+      "type": "certification",
+      "role": "Intermediate Machine Learning",
+      "org": "Kaggle",
+      "startDate": "2025",
+      "endDate": "2025",
+      "year": 2025,
+      "description": ["Advanced ML techniques, model tuning, and pipelines"],
+      "technologies": ["Machine Learning", "Python"],
+      "credentialUrl": "https://www.kaggle.com/learn/certification/znaxxh/intermediate-machine-learning"
+    },
+    {
+      "id": "postman-ai-summarizer",
+      "type": "certification",
+      "role": "AI Text Summarizer App",
+      "org": "Postman",
+      "startDate": "2024",
+      "endDate": "2024",
+      "year": 2024,
+      "description": ["Building AI-powered apps using APIs"],
+      "technologies": ["AI", "APIs"],
+      "credentialUrl": "https://verify.skilljar.com/c/3svykujgu5xd"
+    },
+    {
+      "id": "gcp-loadbalancing",
+      "type": "certification",
+      "role": "Implement Load Balancing on Compute Engine",
+      "org": "Google Cloud",
+      "startDate": "2024",
+      "endDate": "2024",
+      "year": 2024,
+      "description": ["GCP skill badge on load balancing + compute"],
+      "technologies": ["GCP", "Cloud", "Networking"],
+      "credentialUrl": "https://www.credly.com/badges/70b06b21-8548-442d-8591-ae8c6390af64/linked_in_profile"
+    },
+    {
+      "id": "postman-api-fundamentals",
+      "type": "certification",
+      "role": "API Fundamentals Student Expert",
+      "org": "Postman",
+      "startDate": "2024",
+      "endDate": "2024",
+      "year": 2024,
+      "description": ["API design, testing, and best practices"],
+      "technologies": ["APIs", "Postman"],
+      "credentialUrl": "https://badgr.com/public/assertions/7enItB4nQwOmHzcxukO6lA?identity__email=anurag22102%40iiitnr.edu.in"
+    }
+  ],
+  "openTo": [
+    "ML / AI Research Internships",
+    "Full-Time ML Engineer Roles (2026)",
+    "Research Collaborations",
+    "Open Source Contributions"
+  ]
+}

@@ -1,260 +1,234 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useState, useEffect } from 'react'
-import {
-  Code,
-  Palette,
-  Zap,
-  Heart,
-  Coffee,
-  BookOpen,
-  Target,
-  Users
-} from 'lucide-react'
+import { Brain, Coffee, ShieldCheck, Zap } from 'lucide-react'
+import portfolio from '../../data/portfolio.json'
 import profileImg from '../../assets/images/profile.webp'
-import { supabaseService } from '../../services/supabaseService'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
-const About = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  })
+const ICONS = { Brain, Coffee, ShieldCheck, Zap }
 
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const [certificateCount, setCertificateCount] = useState(4) // Default fallback
+function AnimatedNumber({ target, inView, suffix = '' }) {
+  const [value, setValue] = useState(0)
+  const reduced = useReducedMotion()
 
-  // Fetch certificate count from Supabase
   useEffect(() => {
-    const fetchCertificateCount = async () => {
-      try {
-        const result = await supabaseService.getCertificates()
-        if (result.success && result.data) {
-          setCertificateCount(result.data.length)
-        }
-      } catch (error) {
-        console.error('Error fetching certificates:', error)
-        // Keep the default fallback value
-      }
+    if (!inView) return
+    if (reduced) { setValue(target); return }
+    const duration = 1600
+    const start = performance.now()
+    let raf = 0
+    const tick = (t) => {
+      const p = Math.min(1, (t - start) / duration)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setValue(Math.round(eased * target))
+      if (p < 1) raf = requestAnimationFrame(tick)
     }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, target, reduced])
 
-    fetchCertificateCount()
-  }, [])
+  return <span className="tabular-nums">{value}{suffix}</span>
+}
 
-  const highlights = [
-    {
-      icon: Code,
-      title: "Clean Code",
-      description: "Writing maintainable, scalable, and efficient code is my passion."
-    },
-    {
-      icon: Palette,
-      title: "Design Focused",
-      description: "I believe great UX/UI design is just as important as functionality."
-    },
-    {
-      icon: Zap,
-      title: "Performance",
-      description: "Optimizing for speed and performance in every project I build."
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "I thrive in team environments and love sharing knowledge."
-    }
-  ]
-
-  const stats = [
-    { number: "2026", label: "B.Tech Student" },
-    { number: "10+", label: "ML Projects" },
-    { number: "15+", label: "Technologies" },
-    { number: `${certificateCount}+`, label: "Certifications" }
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+function TypingReveal({ text, inView }) {
+  const reduced = useReducedMotion()
+  const words = text.split(/(\s+)/)
+  if (reduced || !inView) {
+    return <p className="text-base md:text-lg leading-relaxed" style={{ color: '#c7ccde' }}>{text}</p>
   }
+  return (
+    <p className="text-base md:text-lg leading-relaxed" style={{ color: '#c7ccde' }}>
+      {words.map((w, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 6, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ delay: i * 0.02, duration: 0.32 }}
+          style={{ display: 'inline-block', whiteSpace: 'pre' }}
+        >
+          {w}
+        </motion.span>
+      ))}
+    </p>
+  )
+}
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
+export default function About() {
+  const { about, personal } = portfolio
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true })
+  const [imgLoaded, setImgLoaded] = useState(false)
+  const reduced = useReducedMotion()
+
+  const badgeCount = about.badges.length
+  const orbitBase = 190 // px
 
   return (
-    <section id="about" className="py-16 md:py-20 px-6 md:px-4">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="text-blue-600 dark:text-blue-400">Me</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Passionate developer with a love for creating digital experiences that make a difference.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mr-16 lg:ml-32 gap-8 md:gap-12 items-center mb-16 md:mb-20">
-          {/* About Text */}
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6 px-2 md:px-4 lg:px-0 lg:pr-16 xl:pr-20"
-          >
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                Hi there! I'm Anurag Pratap Singh 👋
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a passionate Data Science and AI student at IIIT Raipur, specializing in machine learning
-                and artificial intelligence. My journey in tech is driven by curiosity and a desire to solve
-                real-world problems using intelligent systems and data-driven solutions.
-              </p>
+    <section id="about" ref={ref} className="relative py-24 md:py-32 px-4">
+      <div className="container-edge">
+        {/* Section header */}
+        <div className="mb-16 flex items-end justify-between flex-wrap gap-4">
+          <div>
+            <div className="font-mono text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#00f5ff' }}>
+              // 01 — about
             </div>
-
-            <div>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                From building ML pipelines for student performance prediction to developing AI-powered medical
-                diagnosis systems, I love creating impactful solutions. I'm also passionate about cybersecurity,
-                having completed a virtual internship at CDAC where I enhanced system security for 25+ applications.
-              </p>
-            </div>
-
-            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-              <div className="flex items-center space-x-2">
-                <Coffee size={16} />
-                <span>Coffee enthusiast</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <BookOpen size={16} />
-                <span>Lifelong learner</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Heart size={16} className="text-red-500" />
-                <span>Open source contributor</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8 }}
-            className="relative lg:mr-16 lg:ml-16"
-          >
-            <div className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden">
-              {/* Fallback background with "A" */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
-                <div className="text-white text-6xl font-bold">A</div>
-                <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
-              </div>
-
-              {/* Actual profile image */}
-              <img
-                src={profileImg}
-                alt="Anurag Pratap Singh"
-                className={`absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-500 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                loading="eager"
-                fetchPriority="high"
-                onLoad={() => setImageLoaded(true)}
-                onError={() => setImageLoaded(false)}
-              />
-            </div>
-
-            {/* Floating elements */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-4 -right-4 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
-            >
-              <Code size={24} className="text-blue-600 dark:text-blue-400" />
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-              className="absolute -bottom-4 -left-4 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
-            >
-              <Palette size={24} className="text-purple-600 dark:text-purple-400" />
-            </motion.div>
-          </motion.div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">
+              <span className="text-gradient">whoami</span>
+            </h2>
+          </div>
+          <div className="font-mono text-xs max-w-xs" style={{ color: '#6e78a0' }}>
+            <span style={{ color: '#5bf0ff' }}>$</span> cat ./bio.md
+          </div>
         </div>
 
-        {/* Highlights */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16 md:mb-20 px-2 md:px-0"
-        >
-          {highlights.map((highlight, index) => {
-            const IconComponent = highlight.icon
-            return (
-              <motion.div
-                key={highlight.title}
-                variants={itemVariants}
-                className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+          {/* Left: Image + orbits */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative" style={{ width: 'min(380px, 80vw)', height: 'min(380px, 80vw)' }}>
+              {/* Rotating hex border */}
+              <div
+                className="absolute inset-0 hex-clip"
+                style={{
+                  background: 'conic-gradient(from 0deg, #00f5ff, #a855f7, #00ff88, #00f5ff)',
+                  animation: reduced ? 'none' : 'rotate360 22s linear infinite',
+                  padding: '2px',
+                }}
               >
-                <div className="inline-flex p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mb-4">
-                  <IconComponent size={32} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                  {highlight.title}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {highlight.description}
-                </p>
-              </motion.div>
-            )
-          })}
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              variants={itemVariants}
-              className="text-center"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                {stat.number}
+                <div className="w-full h-full hex-clip" style={{ background: '#05060d' }} />
               </div>
-              <div className="text-gray-600 dark:text-gray-400">
-                {stat.label}
+
+              {/* Image clipped hex */}
+              <div
+                className="absolute hex-clip overflow-hidden"
+                style={{ top: 10, left: 10, right: 10, bottom: 10 }}
+              >
+                <div
+                  className="w-full h-full flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #0d1020, #12162a)' }}
+                >
+                  {!imgLoaded && (
+                    <span className="font-display text-6xl text-gradient">{personal.initials}</span>
+                  )}
+                  <img
+                    src={profileImg}
+                    alt={personal.name}
+                    onLoad={() => setImgLoaded(true)}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              {/* Orbit ring */}
+              <div
+                className="absolute inset-[-30px] rounded-full border"
+                style={{ borderColor: 'rgba(91, 240, 255, 0.15)', borderStyle: 'dashed' }}
+              />
+
+              {/* Orbiting tech badges */}
+              {about.badges.map((badge, i) => {
+                const angle = (i / badgeCount) * Math.PI * 2
+                const x = Math.cos(angle) * orbitBase
+                const y = Math.sin(angle) * orbitBase
+                const delay = (i / badgeCount) * (reduced ? 0 : 20)
+                return (
+                  <div
+                    key={badge.label}
+                    aria-hidden="true"
+                    className="absolute left-1/2 top-1/2"
+                    style={{
+                      marginLeft: -40,
+                      marginTop: -12,
+                      transform: reduced
+                        ? `translate(${x}px, ${y}px)`
+                        : undefined,
+                      animation: reduced
+                        ? 'none'
+                        : `orbit 20s linear infinite`,
+                      animationDelay: `-${delay}s`,
+                      ['--orbit-r']: `${orbitBase}px`,
+                    }}
+                  >
+                    <div
+                      className="px-2.5 py-1 rounded-full font-mono text-[10px] font-medium border whitespace-nowrap"
+                      style={{
+                        background: 'rgba(13, 16, 32, 0.88)',
+                        borderColor: `${badge.color}55`,
+                        color: badge.color,
+                        boxShadow: `0 0 14px -4px ${badge.color}66`,
+                      }}
+                    >
+                      {badge.label}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Right: Bio */}
+          <div className="lg:col-span-7 space-y-6">
+            <h3 className="font-display text-2xl md:text-3xl font-semibold" style={{ color: '#fff' }}>
+              {about.greeting}
+            </h3>
+
+            <div className="space-y-4">
+              {about.paragraphs.map((p, i) => (
+                <TypingReveal key={i} text={p} inView={inView} />
+              ))}
+            </div>
+
+            {/* Trait rows */}
+            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-3 pt-2">
+              {about.traits.map((t, i) => {
+                const Icon = ICONS[t.icon] || Zap
+                return (
+                  <motion.div
+                    key={t.text}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                    transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
+                    className="flex items-start gap-3"
+                  >
+                    <div
+                      className="mt-0.5 w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: 'rgba(0, 245, 255, 0.08)',
+                        border: '1px solid rgba(0, 245, 255, 0.2)',
+                      }}
+                    >
+                      <Icon size={15} style={{ color: '#5bf0ff' }} />
+                    </div>
+                    <span className="text-sm pt-1.5" style={{ color: '#c7ccde' }}>
+                      {t.text}
+                    </span>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats row */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {about.stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.1 + i * 0.08, duration: 0.45 }}
+              className="p-5 rounded-xl glass hairline text-center"
+            >
+              <div className="font-display text-3xl md:text-4xl font-bold text-gradient-emerald mb-1.5">
+                <AnimatedNumber target={s.value} inView={inView} suffix={s.suffix} />
+              </div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: '#9aa2bd' }}>
+                {s.label}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-
-export default About

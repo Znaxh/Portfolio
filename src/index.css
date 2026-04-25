@@ -1,100 +1,414 @@
 @import "tailwindcss";
 
-/* Custom utility classes */
+/* ============================================================
+   THEME (Tailwind v4 CSS-first config)
+   ============================================================ */
+@theme {
+  --font-sans: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+
+  /* Core palette */
+  --color-ink-950: #05060d;
+  --color-ink-900: #080a14;
+  --color-ink-850: #0a0d1a;
+  --color-ink-800: #0d1020;
+  --color-ink-700: #12162a;
+  --color-ink-600: #1a1e35;
+  --color-ink-500: #242a44;
+
+  --color-fog-50: #f4f6ff;
+  --color-fog-200: #c7ccde;
+  --color-fog-300: #9aa2bd;
+  --color-fog-400: #6e78a0;
+  --color-fog-500: #4e5680;
+
+  --color-cyan-50: #e0fbff;
+  --color-cyan-400: #5bf0ff;
+  --color-cyan-500: #00f5ff;
+  --color-cyan-600: #00c6d1;
+
+  --color-violet-400: #c084fc;
+  --color-violet-500: #a855f7;
+  --color-violet-600: #7c3aed;
+
+  --color-emerald-400: #34f5a5;
+  --color-emerald-500: #00ff88;
+  --color-emerald-600: #00cc6a;
+
+  --color-rose-400: #ff7a9a;
+  --color-rose-500: #ff5e84;
+
+  --color-warn: #ffb547;
+  --color-bad: #ff5577;
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--color-ink-950);
+  color: var(--color-fog-200);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Hide default cursor on pointer devices when custom cursor is active */
+body.custom-cursor-active {
+  cursor: none;
+}
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active [role="button"],
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active select {
+  cursor: none;
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--color-cyan-500) 30%, transparent);
+  color: #fff;
+}
+
+/* Scrollbar (Hidden by user request) */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+}
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-cyan-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: #fff;
+  letter-spacing: -0.015em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+code, pre, kbd, samp, .font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-cyan-500), var(--color-violet-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, var(--color-emerald-500), var(--color-cyan-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+section {
+  position: relative;
+  z-index: 1;
+  max-width: 100vw;
+}
+
+.container-edge {
+  max-width: min(1200px, calc(100vw - 2rem));
+  margin-inline: auto;
+}
+
+.glass {
+  background: rgba(13, 16, 32, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(91, 240, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(8, 10, 20, 0.78);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(91, 240, 255, 0.12);
+}
+
+.hairline {
+  border: 1px solid rgba(91, 240, 255, 0.1);
+}
+
+.ring-glow {
+  box-shadow:
+    0 0 0 1px rgba(91, 240, 255, 0.2),
+    0 0 24px -4px rgba(0, 245, 255, 0.35),
+    0 0 48px -12px rgba(168, 85, 247, 0.25);
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(0, 245, 255, 0);
+  }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes scanlines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes hexSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+}
+
+@keyframes glitch {
+  0%   { transform: translate(0, 0); filter: hue-rotate(0deg); }
+  10%  { transform: translate(-2px, 1px); filter: hue-rotate(25deg); }
+  20%  { transform: translate(2px, -1px); filter: hue-rotate(-15deg); }
+  30%  { transform: translate(-1px, 2px); filter: hue-rotate(40deg); }
+  40%  { transform: translate(3px, 0); filter: hue-rotate(-30deg); }
+  50%  { transform: translate(0, -2px); filter: hue-rotate(60deg); }
+  60%  { transform: translate(-3px, 1px); filter: hue-rotate(-20deg); }
+  70%  { transform: translate(2px, -2px); filter: hue-rotate(35deg); }
+  80%  { transform: translate(0, 2px); filter: hue-rotate(-10deg); }
+  90%  { transform: translate(1px, -1px); filter: hue-rotate(20deg); }
+  100% { transform: translate(0, 0); filter: hue-rotate(0deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes conicSpin {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes caretBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   UTILITY CLASSES (custom, used across app)
+   ============================================================ */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 245, 255, 0.03) 0px,
+    rgba(0, 245, 255, 0.03) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+  animation: scanlines 8s linear infinite;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(91, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.noise {
+  position: relative;
+}
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' /></svg>");
+}
+
+.caret::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--color-cyan-500);
+  animation: caretBlink 1s steps(2, end) infinite;
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.glitch-text[data-glitch] {
+  animation: glitch 0.6s steps(10, end);
+}
+
+.animate-float { animation: floatY 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.2s ease-out infinite; }
+.animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+.animate-rotate-slow { animation: rotate360 30s linear infinite; }
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.4) 0%,
+    #fff 25%,
+    var(--color-cyan-400) 50%,
+    #fff 75%,
+    rgba(255,255,255,0.4) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Animated conic border (for Contact cards etc.) */
+.conic-border {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-ink-900);
+  border-radius: 1rem;
+}
+.conic-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), var(--color-cyan-500), var(--color-violet-500), var(--color-emerald-500), var(--color-cyan-500));
+  animation: conicSpin 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  padding: 1.5px;
+}
+
+.hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* ============================================================
+   LINE CLAMPING
+   ============================================================ */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
-/* Prevent horizontal overflow on all devices */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-#root {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-.navbar-container {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* Prevent layout shifts and white space issues */
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  scroll-behavior: smooth;
-}
-
-/* Ensure consistent font loading */
-body {
-  font-display: swap;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Prevent flash of unstyled content */
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Smooth transitions for all elements */
-* {
-  box-sizing: border-box;
-}
-
-/* Prevent any element from causing horizontal overflow */
-*, *::before, *::after {
-  max-width: 100%;
-}
-
-/* Fix potential margin collapse issues */
-section {
-  position: relative;
-  z-index: 1;
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-/* Ensure proper spacing between sections */
-section:not(:first-child) {
-  margin-top: 0;
-}
-
-/* Prevent text from overflowing */
-h1, h2, h3, h4, h5, h6, p {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Ensure containers don't exceed viewport */
-.container, .max-w-4xl, .max-w-6xl, .max-w-7xl {
-  max-width: calc(100vw - 2rem);
-}
-
-/* Mobile navbar fixes */
-@media (max-width: 768px) {
-  .navbar-container {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
+}
 
-  /* Ensure mobile menu spans full viewport width */
-  .mobile-nav-full-width {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
+/* ============================================================
+   TOUCH DEVICES — hide custom cursor visually
+   ============================================================ */
+@media (pointer: coarse) {
+  body.custom-cursor-active {
+    cursor: auto;
   }
 }

@@ -1,22 +1,35 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import BinaryFloat from '../effects/BinaryFloat'
 
-const Layout = ({ children }) => {
+const LOGO_CLICK_THRESHOLD = 5
+const RESET_AFTER_MS = 2500
+
+export default function Layout({ children }) {
+  const [logoClicks, setLogoClicks] = useState(0)
+  const [binaryTrigger, setBinaryTrigger] = useState(0)
+  const [resetTimer, setResetTimer] = useState(null)
+
+  const handleLogoClick = () => {
+    const next = logoClicks + 1
+    if (next >= LOGO_CLICK_THRESHOLD) {
+      setBinaryTrigger((n) => n + 1)
+      setLogoClicks(0)
+      if (resetTimer) clearTimeout(resetTimer)
+    } else {
+      setLogoClicks(next)
+      if (resetTimer) clearTimeout(resetTimer)
+      setResetTimer(setTimeout(() => setLogoClicks(0), RESET_AFTER_MS))
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 overflow-x-hidden max-w-full">
-      <Navbar />
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="pt-14 md:pt-20 overflow-x-hidden max-w-full"
-      >
-        {children}
-      </motion.main>
+    <div className="min-h-screen flex flex-col">
+      <Navbar onLogoClick={handleLogoClick} />
+      <main className="flex-1 pt-16">{children}</main>
       <Footer />
+      <BinaryFloat trigger={binaryTrigger} />
     </div>
   )
 }
-
-export default Layout

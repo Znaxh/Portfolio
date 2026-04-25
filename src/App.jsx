@@ -1,33 +1,31 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import Resume from './pages/Resume'
-import AdminLogin from './pages/admin/AdminLogin'
-import AdminDashboard from './pages/admin/AdminDashboard'
 import NotFound from './pages/NotFound'
-import ProtectedRoute from './components/ProtectedRoute'
+import NeuralBackground from './components/effects/NeuralBackground'
+import CustomCursor from './components/effects/CustomCursor'
+import LoadingScreen from './components/effects/LoadingScreen'
+import KonamiEasterEgg from './components/effects/KonamiEasterEgg'
+import MatrixEasterEgg from './components/effects/MatrixEasterEgg'
+import ScrollToTop from './components/util/ScrollToTop'
 
-function App() {
+export default function App() {
   return (
     <Router>
+      <NeuralBackground />
+      <CustomCursor />
+      <LoadingScreen />
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
+      <KonamiEasterEgg />
+      <MatrixEasterEgg />
     </Router>
   )
 }
-
-export default App

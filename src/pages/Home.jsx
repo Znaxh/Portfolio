@@ -1,19 +1,17 @@
-import Hero from '../components/sections/Hero'
+import TerminalHero from '../components/sections/TerminalHero'
 import About from '../components/sections/About'
-import Skills from '../components/sections/Skills'
-import Projects from '../components/sections/Projects'
+import SkillsConstellation from '../components/sections/SkillsConstellation'
+import ProjectsSection from '../components/sections/ProjectsSection'
 import Contact from '../components/sections/Contact'
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className="min-h-screen">
-      <Hero />
+    <>
+      <TerminalHero />
       <About />
-      <Skills />
-      <Projects />
+      <SkillsConstellation />
+      <ProjectsSection />
       <Contact />
-    </div>
+    </>
   )
 }
-
-export default Home

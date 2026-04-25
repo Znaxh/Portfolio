@@ -3,23 +3,24 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Global error handler for cookie-related issues
-window.addEventListener('error', (event) => {
-  // Suppress Cloudflare cookie errors
-  if (event.message && event.message.includes('__cf_bm')) {
-    event.preventDefault()
-    return false
-  }
-})
-
-// Handle unhandled promise rejections
-window.addEventListener('unhandledrejection', (event) => {
-  // Suppress cookie-related promise rejections
-  if (event.reason && event.reason.toString().includes('cookie')) {
-    event.preventDefault()
-    return false
-  }
-})
+if (typeof window !== 'undefined') {
+  console.log(
+    '%c👀 Inspecting my code?',
+    'color: #00f5ff; font-size: 20px; font-weight: bold; text-shadow: 0 0 8px #00f5ff;'
+  )
+  console.log(
+    '%cI see you snooping. That curiosity is exactly what I look for too.',
+    'color: #a855f7; font-size: 14px;'
+  )
+  console.log(
+    '%c→ znaxxh@gmail.com | github.com/Znaxh',
+    'color: #00ff88; font-size: 12px; font-family: monospace;'
+  )
+  console.log(
+    '%cPro tip: try the Konami code on the homepage. Or type "matrix".',
+    'color: #6e78a0; font-size: 11px; font-style: italic;'
+  )
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
