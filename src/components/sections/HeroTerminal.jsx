@@ -1,106 +1,9 @@
-import { useEffect, useState } from 'react';
-
-const ASCII_ART = `
-░█████╗░███╗░░██╗██╗░░░██╗██████╗░░█████╗░░██████╗
-██╔══██╗████╗░██║██║░░░██║██╔══██╗██╔══██╗██╔════╝
-███████║██╔██╗██║██║░░░██║██████╔╝███████║██║░░╗█╗
-██╔══██║██║╚████║██║░░░██║██╔══██╗██╔══██║██║░░╚██╗
-██║░░██║██║░╚███║╚██████╔╝██║░░██║██║░░██║╚██████╔╝
-╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝
-`.trim();
+import { motion } from 'framer-motion';
+import { ArrowDown, Bot, Download, Mail, Sparkles } from 'lucide-react';
+import portfolioData from '../../data/portfolio.json';
 
 export default function HeroTerminal() {
-  const [lines, setLines] = useState([]);
-  const [showButtons, setShowButtons] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-    
-    const sequence = async () => {
-      const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-      
-      const typeLine = async (text, color, delayMs = 30) => {
-        let currentText = '';
-        setLines(prev => [...prev, { text: '', color }]);
-        for (let i = 0; i < text.length; i++) {
-          if (!isMounted) return;
-          currentText += text[i];
-          setLines(prev => {
-            const newLines = [...prev];
-            newLines[newLines.length - 1].text = currentText;
-            return newLines;
-          });
-          await wait(delayMs);
-        }
-      };
-
-      const addLine = (text, color) => {
-        if (!isMounted) return;
-        setLines(prev => [...prev, { text, color }]);
-      };
-
-      await wait(500);
-      await typeLine('> QUERY: "Who is this person?"', 'text-[#00ff88]');
-      await wait(400);
-      addLine('> Searching embedding space...', 'text-gray-500');
-      await wait(600);
-      
-      const progressBar = '[████████████████████]';
-      let progressText = '> ';
-      setLines(prev => [...prev, { text: progressText, color: 'text-white' }]);
-      for(let i=0; i<progressBar.length; i++){
-        if (!isMounted) return;
-        progressText += progressBar[i];
-        setLines(prev => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1].text = progressText;
-          return newLines;
-        });
-        await wait(20);
-      }
-      if(!isMounted) return;
-      setLines(prev => {
-        const newLines = [...prev];
-        newLines[newLines.length - 1].text = progressText + ' 100% — 4 chunks retrieved';
-        return newLines;
-      });
-      
-      await wait(400);
-      addLine('', 'text-white');
-      
-      await wait(200);
-      const nameText = '> Name: Anurag Pratap Singh';
-      let currentName = '> ';
-      setLines(prev => [...prev, { text: currentName, color: 'text-white' }]);
-      const words = nameText.split(' ').slice(1);
-      for(let word of words) {
-        if (!isMounted) return;
-        currentName += word + ' ';
-        setLines(prev => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1].text = currentName;
-          return newLines;
-        });
-        await wait(150);
-      }
-      
-      await wait(300);
-      addLine('> Role: AI Engineer — RAG pipelines · LLM evals · vector search at scale', 'text-white');
-      await wait(300);
-      addLine('> Location: Raipur, India · Open to remote opportunities', 'text-white');
-      await wait(500);
-      addLine('> Query complete. Confidence: 0.97', 'text-[#00ff88]');
-      
-      await wait(800);
-      if (isMounted) {
-        setShowButtons(true);
-      }
-    };
-    
-    sequence();
-    
-    return () => { isMounted = false; };
-  }, []);
+  const { meta, metrics, personal } = portfolioData;
 
   const scrollToWork = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -112,63 +15,99 @@ export default function HeroTerminal() {
   };
 
   return (
-    <div className="relative min-h-screen bg-black flex flex-col items-center justify-center p-4 overflow-hidden" id="hero">
-      {/* Scanline overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06))',
-        backgroundSize: '100% 4px, 6px 100%',
-        zIndex: 10
-      }}></div>
-
-      {/* Flicker animation wrapper */}
-      <div className="w-full max-w-4xl flex flex-col items-center z-20 animate-pulse-flicker">
-        
-        <pre className="text-[#00ff88] font-mono text-[10px] sm:text-xs md:text-sm lg:text-base leading-tight mb-12 select-none" style={{ textShadow: '0 0 10px #00ff88' }}>
-          {ASCII_ART}
-        </pre>
-        
-        <div className="w-full font-mono text-sm sm:text-base mb-8 min-h-[250px]">
-          {lines.map((line, idx) => (
-            <div key={idx} className={`${line.color} mb-2 break-words`}>
-              {line.text}
-              {idx === lines.length - 1 && !showButtons && (
-                <span className="inline-block w-2 h-4 sm:h-5 bg-white ml-1 animate-pulse"></span>
-              )}
-            </div>
-          ))}
-          {showButtons && (
-            <div className="text-[#00ff88] mb-2">
-              <span className="inline-block w-2 h-4 sm:h-5 bg-[#00ff88] animate-pulse"></span>
-            </div>
-          )}
-        </div>
-
-        <div className={`flex flex-col sm:flex-row gap-4 transition-opacity duration-1000 ${showButtons ? 'opacity-100' : 'opacity-0'}`}>
-          <button 
-            onClick={scrollToWork}
-            className="px-6 py-3 bg-transparent border border-[#00ff88] text-[#00ff88] font-mono hover:bg-[#00ff88] hover:text-black transition-colors"
-          >
-            View My Work ↓
-          </button>
-          <button 
-            onClick={openAskAnurag}
-            className="px-6 py-3 bg-[#00ff88] text-black font-mono hover:bg-[#00cc66] transition-colors"
-          >
-            Ask Anurag →
-          </button>
-        </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden px-4 py-24 theme-hero" id="hero">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="hero-orb hero-orb-one" />
+        <div className="hero-orb hero-orb-two" />
+        <div className="hero-grid" />
       </div>
-      
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes pulse-flicker {
-          0% { opacity: 1; }
-          50% { opacity: 0.98; }
-          100% { opacity: 1; }
-        }
-        .animate-pulse-flicker {
-          animation: pulse-flicker 4s infinite;
-        }
-      `}} />
-    </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-7 theme-chip">
+            <Sparkles size={15} />
+            <span>AI Engineer · RAG · LLM evals · vector search</span>
+          </div>
+
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.98] mb-6 theme-heading">
+            Building calm,
+            <span className="block text-gradient">usable AI systems.</span>
+          </h1>
+
+          <p className="max-w-2xl text-lg sm:text-xl leading-relaxed mb-8 theme-muted">
+            {meta.tagline}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href={personal.resumeUrl} target="_blank" rel="noreferrer" className="theme-primary-btn inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold">
+              <Download size={17} />
+              View resume
+            </a>
+            <button onClick={scrollToWork} className="theme-ghost-btn inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold">
+              Explore projects
+              <ArrowDown size={17} />
+            </button>
+            <button onClick={openAskAnurag} className="theme-soft-btn inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold">
+              <Bot size={17} />
+              Ask Anurag
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl">
+            {metrics.slice(0, 6).map((metric) => (
+              <div key={metric.label} className="theme-card rounded-2xl p-4">
+                <div className="font-mono text-xl font-bold theme-heading">
+                  {metric.prefix}{metric.value}{metric.suffix}
+                </div>
+                <div className="text-xs theme-muted">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="relative"
+        >
+          <div className="resume-glass rounded-[2rem] p-5 sm:p-7">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.25em] theme-accent">Resume Snapshot</div>
+                <h2 className="font-display text-2xl font-bold theme-heading mt-1">{meta.name}</h2>
+              </div>
+              <a href={`mailto:${meta.email}`} className="theme-icon-btn" aria-label="Email Anurag">
+                <Mail size={18} />
+              </a>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                ['Current focus', 'Production RAG, LLM evaluation, retrieval systems'],
+                ['Experience', 'AI Engineer Intern at Lejit.AI'],
+                ['Education', 'B.Tech in DS & AI, IIIT Raipur'],
+                ['Recognition', 'IEEE ACROSET author · Amazon ML Summer School'],
+              ].map(([label, value], index) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: 0.35 + index * 0.08 }}
+                  className="rounded-2xl p-4 theme-card"
+                >
+                  <div className="font-mono text-[11px] uppercase tracking-[0.18em] theme-accent mb-1">{label}</div>
+                  <div className="theme-body">{value}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }

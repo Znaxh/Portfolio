@@ -2,11 +2,24 @@
   "meta": {
     "name": "Anurag Pratap Singh",
     "title": "AI Engineer",
-    "tagline": "I build systems that think — RAG pipelines, LLM evals, vector search at scale.",
+    "tagline": "AI Engineer building production-grade RAG systems, LLM evaluations, vector search, and applied ML products.",
     "email": "anurag.ps.contact@gmail.com",
     "github": "https://github.com/Znaxh",
     "linkedin": "https://linkedin.com/in/pratapsinghanurag",
     "location": "Raipur, India"
+  },
+  "personal": {
+    "name": "Anurag Pratap Singh",
+    "initials": "APS",
+    "title": "AI Engineer",
+    "tagline": "I design fast, source-grounded AI systems: legal RAG, log intelligence, resume ranking, and production-ready ML tooling.",
+    "email": "anurag.ps.contact@gmail.com",
+    "github": "https://github.com/Znaxh",
+    "linkedin": "https://linkedin.com/in/pratapsinghanurag",
+    "location": "Raipur, India",
+    "timezone": "UTC+5:30",
+    "resumeUrl": "https://drive.google.com/file/d/12Yt7RreCEnDTasnGB_FMczyiB4yBFYsj/view?usp=sharing",
+    "resumeDownloadUrl": "https://drive.google.com/file/d/12Yt7RreCEnDTasnGB_FMczyiB4yBFYsj/view?usp=sharing"
   },
   "socials": [
     { "id": "github", "label": "GitHub", "url": "https://github.com/Znaxh" },
@@ -65,6 +78,8 @@
       "subtitle": "AI Legal Research Assistant",
       "description": "Enables non-lawyers, students, and litigants to query the Indian Penal Code in plain language. Delivers cited, source-grounded answers in under 2 seconds.",
       "tags": ["FastAPI", "LangChain", "LlamaIndex", "FAISS", "Ragas", "Gemini"],
+      "problem": "Legal research is slow and inaccessible for people who do not know exact IPC sections or legal phrasing.",
+      "impact": "Plain-language questions return cited, source-grounded answers in under 2 seconds across 189 indexed IPC chunks.",
       "pipeline": [
         { "step": "User Query", "detail": "Plain language input from non-lawyers" },
         { "step": "LLM Enhancement", "detail": "Groq query expansion for better retrieval" },
@@ -82,6 +97,8 @@
       "subtitle": "AI Log Analysis System",
       "description": "Converts raw server log dumps into structured P1–P4 incident reports in seconds. Solves the on-call problem of diagnosing production failures under time pressure.",
       "tags": ["FastAPI", "React", "DBSCAN", "Sentence-Transformers", "LangChain", "Prometheus"],
+      "problem": "On-call engineers lose time scanning noisy logs before they can identify severity, clusters, and probable root cause.",
+      "impact": "Raw logs become structured P1-P4 incident reports with anomaly signals, semantic clusters, and deterministic fallback logic.",
       "pipeline": [
         { "step": "Raw Logs", "detail": "Ingests across 5 different log formats" },
         { "step": "Z-score Detection", "detail": "Anomaly detection on error-rate, latency, silence" },
@@ -99,6 +116,8 @@
       "subtitle": "Automated Candidate Ranking",
       "description": "Screens and ranks resumes against job descriptions automatically. Improved recruiter matching accuracy from 72% to 85% and cut manual shortlisting time significantly.",
       "tags": ["Flask", "Next.js", "BERT", "XGBoost", "SpaCy", "Redis"],
+      "problem": "Recruiters need consistent resume-to-JD matching without manually comparing every candidate profile.",
+      "impact": "A 9-algorithm ensemble improved matching accuracy from 72% to 85% with cached rankings and Prometheus latency tracking.",
       "pipeline": [
         { "step": "JD Input", "detail": "LangChain + Groq structured JD expansion" },
         { "step": "Resume Parse", "detail": "SpaCy NER + entity extraction" },
@@ -109,6 +128,58 @@
       "metrics": ["72% → 85% accuracy", "9-algorithm ensemble", "Redis TTL cache"],
       "github": "https://github.com/Znaxh",
       "live": ""
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-iiit-raipur",
+      "type": "education",
+      "role": "B.Tech in Data Science and Artificial Intelligence",
+      "org": "International Institute of Information Technology Raipur",
+      "startDate": "Aug 2022",
+      "endDate": "May 2026",
+      "location": "Chhattisgarh, India",
+      "description": ["CGPA: 7.25/10", "Focused on applied ML, data systems, and AI engineering."],
+      "technologies": ["Data Science", "Artificial Intelligence", "Machine Learning"],
+      "year": 2026
+    },
+    {
+      "id": "edu-dps-raipur",
+      "type": "education",
+      "role": "Science Stream",
+      "org": "Dronacharya Public School",
+      "startDate": "Apr 2019",
+      "endDate": "May 2021",
+      "location": "Raipur, Chhattisgarh",
+      "description": ["Percentage: 74%"],
+      "technologies": ["Science", "Mathematics"],
+      "year": 2021
+    }
+  ],
+  "certifications": [
+    {
+      "id": "amazon-ml-summer-school",
+      "type": "certification",
+      "role": "Amazon ML Summer School",
+      "org": "Amazon",
+      "startDate": "2024",
+      "endDate": "2024",
+      "location": "Remote",
+      "description": ["Selected in the top 0.17% of 60,000+ applicants for an intensive ML program led by Amazon scientists."],
+      "technologies": ["Deep Learning", "Computer Vision", "NLP"],
+      "year": 2024
+    },
+    {
+      "id": "ieee-acroset-2024",
+      "type": "certification",
+      "role": "IEEE ACROSET 2024 Co-Author",
+      "org": "IEEE ACROSET",
+      "startDate": "2024",
+      "endDate": "2024",
+      "location": "India",
+      "description": ["Published peer-reviewed facial recognition research achieving 93% accuracy using CNNs."],
+      "technologies": ["CNN", "Computer Vision", "Research"],
+      "year": 2024
     }
   ],
   "experience": [

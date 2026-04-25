@@ -3,13 +3,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
 import { useActiveSection } from '../../hooks/useActiveSection'
+import ThemeToggle from '../ThemeToggle'
+import portfolio from '../../data/portfolio.json'
 
 const navItems = [
   { name: 'work',    href: '/#projects',   section: 'projects' },
   { name: 'skills',  href: '/#skills',     section: 'skills'   },
   { name: 'about',   href: '/#about',      section: 'about'    },
   { name: 'contact', href: '/#contact',    section: 'contact'  },
-  { name: 'resume',  href: '/resume.pdf',  section: null       },
+  { name: 'resume',  href: portfolio.personal.resumeUrl,  section: null       },
 ]
 
 function AnimatedLogo({ onLogoClick }) {
@@ -153,23 +155,23 @@ export default function Navbar({ onLogoClick }) {
       transition={{ duration: 0.4 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'rgba(0, 255, 136, 0.08)' }}>
+      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'rgba(139, 211, 255, 0.12)' }}>
         <div
           className="h-full origin-left"
           style={{
             width: '100%',
             transform: `scaleX(${progress})`,
-            background: 'linear-gradient(90deg, #00ff88, #8b5cf6, #00ff88)',
+            background: 'linear-gradient(90deg, #8bd3ff, #c7a7ff, #a7f3d0)',
             transition: 'transform 80ms linear',
-            boxShadow: '0 0 10px rgba(0,255,136,0.5)',
+            boxShadow: '0 0 10px rgba(139,211,255,0.5)',
           }}
         />
       </div>
 
       <div
-        className={`transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'}`}
+        className={`transition-all duration-300 ${scrolled ? 'nav-surface backdrop-blur-md' : 'bg-transparent'}`}
         style={{
-          borderBottom: scrolled ? '1px solid rgba(0,255,136,0.08)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid var(--theme-border)' : '1px solid transparent',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -224,6 +226,10 @@ export default function Navbar({ onLogoClick }) {
             )}
           </div>
 
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+
           <MorphingBurger open={open} onClick={() => setOpen((v) => !v)} />
         </div>
       </div>
@@ -234,10 +240,13 @@ export default function Navbar({ onLogoClick }) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="md:hidden bg-black/95 backdrop-blur-lg border-t"
-            style={{ borderColor: 'rgba(0,255,136,0.1)' }}
+            className="md:hidden nav-surface backdrop-blur-lg border-t"
+            style={{ borderColor: 'var(--theme-border)' }}
           >
             <div className="px-4 py-4 flex flex-col max-w-7xl mx-auto">
+              <div className="pb-3 mb-2 border-b" style={{ borderColor: 'var(--theme-border)' }}>
+                <ThemeToggle />
+              </div>
               {navItems.map((item, i) => {
                  if (item.name === 'resume') {
                     return (

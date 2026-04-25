@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import portfolio from '../data/portfolio.json'
 import MagneticButton from '../components/ui/MagneticButton'
+import ResumeChatbot from '../components/ResumeChatbot'
 
 const typeConfig = {
   experience:    { icon: Briefcase,     label: 'Experience',    color: '#00f5ff' },
@@ -144,10 +145,25 @@ function Card({ item, align }) {
 }
 
 export default function Resume() {
-  const { experience, education, certifications, personal } = portfolio
+  const { experience = [], education = [], certifications = [], personal = {} } = portfolio
+  
+  // Transform experience data from portfolio.json format to the Card component format
+  const transformedExperience = experience.map((exp, idx) => ({
+    id: `exp-${idx}`,
+    type: 'experience',
+    role: exp.role || 'AI Engineer',
+    org: exp.company || '',
+    startDate: exp.period?.split('–')[0]?.trim() || exp.period?.split('—')[0]?.trim() || '',
+    endDate: exp.period?.split('–')[1]?.trim() || exp.period?.split('—')[1]?.trim() || '',
+    location: exp.type === 'remote' ? 'Remote' : 'India',
+    description: exp.bullets || [],
+    technologies: [],
+    year: 2026,
+  }))
+
   const all = useMemo(
-    () => [...experience, ...education, ...certifications].sort((a, b) => b.year - a.year),
-    [experience, education, certifications]
+    () => [...transformedExperience, ...education, ...certifications].sort((a, b) => (b.year || 0) - (a.year || 0)),
+    [transformedExperience, education, certifications]
   )
 
   const [active, setActive] = useState('all')
@@ -159,6 +175,9 @@ export default function Resume() {
   return (
     <div className="min-h-screen pt-20 pb-24 px-4">
       <div className="container-edge">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Main content */}
+          <div className="flex-1 min-w-0">
         {/* Header */}
         <div className="text-center mb-14">
           <div className="font-mono text-xs tracking-[0.3em] uppercase mb-3" style={{ color: '#5bf0ff' }}>
@@ -172,7 +191,7 @@ export default function Resume() {
           </p>
           <MagneticButton
             as="a"
-            href={personal.resumeDownloadUrl}
+            href={personal.resumeDownloadUrl || '#'}
             target="_blank"
             rel="noopener noreferrer"
             glowColor="#00f5ff"
@@ -238,6 +257,18 @@ export default function Resume() {
         <div className="mt-20 text-center font-mono text-xs" style={{ color: '#6e78a0' }}>
           <Calendar size={12} className="inline -mt-0.5 mr-1" />
           last updated — {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+        </div>
+          </div>
+
+          {/* Resume Chatbot - right side panel (desktop) */}
+          <div className="hidden lg:block w-80 flex-shrink-0">
+            <ResumeChatbot />
+          </div>
+        </div>
+
+        {/* Mobile chatbot floating button */}
+        <div className="lg:hidden">
+          <ResumeChatbot />
         </div>
       </div>
     </div>
