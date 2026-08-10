@@ -1,129 +1,113 @@
-# Portfolio Website
+# Portfolio
 
-A modern, responsive portfolio website built with React, Vite, and TailwindCSS. Features dark mode support, GitHub API integration, admin panel, and interactive resume.
+**Personal developer portfolio with animated UI, project showcase, and Groq-powered chat.**
 
-## 🚀 Features
+[![Live Site](https://img.shields.io/badge/site-znaxh.vercel.app-0ea5e9?style=flat-square)](https://znaxh.vercel.app/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
 
-- **Modern Tech Stack**: React + Vite + TailwindCSS
-- **Dark Mode Support**: Toggle between light and dark themes
-- **Responsive Design**: Optimized for all devices
-- **GitHub Integration**: Automatically fetches and displays repositories
-- **Admin Panel**: Manage featured projects with Firebase authentication
-- **Interactive Resume**: Filterable resume with download functionality
-- **Performance Optimized**: Code splitting, lazy loading, and optimized bundle
-- **SEO Ready**: Meta tags, Open Graph, and structured data
-- **Smooth Animations**: Framer Motion animations throughout
+Modern portfolio site highlighting projects, skills, and contact links. Built for fast load, strong visual polish, and interactive sections recruiters can explore quickly.
 
-## 🛠️ Tech Stack
+---
 
-- **Frontend**: React 19, Vite, TailwindCSS
-- **Animations**: Framer Motion
-- **Routing**: React Router DOM
-- **Icons**: Lucide React
-- **Authentication**: Firebase (for admin panel)
-- **Deployment**: Vercel/Netlify ready
+## Highlights
 
-## 📦 Installation
+- **Animated hero & sections** with Framer Motion and GSAP
+- **Skills constellation / graph** visualizations (D3)
+- **Project showcase** driven by `src/data/portfolio.json`
+- **Dark mode** theme toggle
+- **Ask Anurag chatbot** powered by Groq SDK
+- **Pipeline / architecture visualizers** for featured work
+- **Responsive layout** with custom cursor and easter eggs
 
-1. Clone the repository:
+---
+
+## Tech stack
+
+| Layer | Tools |
+|---|---|
+| Frontend | React 19, Vite 7, React Router |
+| Styling | Tailwind CSS 4 |
+| Motion | Framer Motion, GSAP, React Spring |
+| Data viz | D3 |
+| AI chat | Groq SDK |
+| Deploy | Vercel-ready (`vercel.json`) |
+
+---
+
+## Quick start
+
 ```bash
-git clone https://github.com/Znaxh/portfolio-website.git
-cd portfolio-website
-```
-
-2. Install dependencies:
-```bash
+git clone https://github.com/Znaxh/Portfolio.git
+cd Portfolio
 npm install
-```
-
-3. Start the development server:
-```bash
 npm run dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open http://localhost:5173
 
-## 🔧 Configuration
+### Environment variables
 
-### GitHub Integration
-Update the GitHub username in `src/services/githubService.js`:
-```javascript
-const GITHUB_USERNAME = 'your-github-username'
+Create `.env` if using the chatbot features:
+
+```env
+VITE_GROQ_API_KEY=your_groq_api_key
 ```
 
-### Personal Information
-Update your personal information in the following files:
-- `src/components/sections/Hero.jsx`
-- `src/components/sections/About.jsx`
-- `src/components/sections/Contact.jsx`
-- `src/pages/Resume.jsx`
+### Production build
 
-### Firebase Setup (Optional)
-1. Create a Firebase project
-2. Update `src/services/firebase.js` with your Firebase config
-3. Enable Authentication in Firebase console
-
-## 🚀 Deployment
-
-### Vercel
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically with the included `vercel.json` configuration
-
-### Netlify
-1. Push your code to GitHub
-2. Connect your repository to Netlify
-3. Deploy automatically with the included `netlify.toml` configuration
-
-### Manual Build
 ```bash
 npm run build
+npm run preview
 ```
 
-## 📱 Sections
+---
 
-- **Hero**: Introduction with name, title, and call-to-action buttons
-- **About**: Personal information and background
-- **Skills**: Technical skills with interactive progress bars
-- **Projects**: GitHub repositories with filtering and search
-- **Achievements**: Awards, publications, and recognitions
-- **Deployments**: Live project showcases
-- **Resume**: Interactive, filterable resume page
-- **Contact**: Contact form and social links
+## Customize content
 
-## 🔐 Admin Panel
+Most site content lives in:
 
-Access the admin panel at `/admin/login` with your configured Firebase credentials:
-- Email: Set via `VITE_ADMIN_EMAIL` environment variable
-- Password: Set during Firebase user creation
+- `src/data/portfolio.json` — projects, skills, links, metrics
+- `src/components/sections/` — Hero, About, Projects, Contact
+- `public/` — static assets
 
-Features:
-- View repository statistics
-- Manage featured projects
-- Real-time GitHub data sync
+Update portfolio JSON first, then tweak section components for layout changes.
 
-## 🎨 Customization
+---
 
-### Colors
-Update the color scheme in `tailwind.config.js` or use TailwindCSS classes throughout the components.
+## Project structure
 
-### Content
-All content is easily customizable through the component files. Update text, images, and data in the respective section components.
+```
+Portfolio/
+├── src/
+│   ├── components/
+│   │   ├── sections/      # page sections
+│   │   ├── layout/        # navbar, footer
+│   │   ├── effects/       # visual effects
+│   │   └── ui/            # chatbot, buttons
+│   ├── data/
+│   │   └── portfolio.json
+│   └── hooks/
+├── public/
+└── vercel.json
+```
 
-### Animations
-Modify or add animations using Framer Motion in the component files.
+---
 
-## 📄 License
+## Live site
 
-This project is open source and available under the [MIT License](LICENSE).
+https://znaxh.vercel.app/
 
-## 🤝 Contributing
+---
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Znaxh/portfolio-website/issues).
+## Author
 
-## 📞 Contact
+**Anurag Pratap Singh**
 
-Anurag Pratap Singh - [znaxxh@gmail.com](mailto:znaxxh@gmail.com)
+- GitHub: https://github.com/Znaxh
+- LinkedIn: https://www.linkedin.com/in/pratapsinghanurag/
 
-Project Link: [https://github.com/Znaxh/portfolio-website](https://github.com/Znaxh/portfolio-website)
-# Portfolio-new
+## License
+
+MIT — see [LICENSE](LICENSE) if present.
